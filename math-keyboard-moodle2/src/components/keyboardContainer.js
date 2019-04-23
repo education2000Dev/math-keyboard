@@ -46,7 +46,7 @@ class KeyboardContainer extends React.Component {
         })
     }
     render() {
-        var container = document.getElementsByClassName('card card-block')[0];
+        var container = document.getElementById('region-main');
         // console.log(window.innerWidth)
         // console.log(document.body.scrollWidth)
         // console.log(document.body.offsetWidth)
@@ -64,36 +64,9 @@ class KeyboardContainer extends React.Component {
         // console.log(this.props.divelem.innerWidth)
         var styles = StyleSheet.create({
             keyboardContainer: {
-                zIndex: 1000,
-                touchAction: 'none',
-                padding: '10px 10px 0px 10px',
-                position: 'fixed',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                backgroundColor: '#eeeeee',
-                height: 250,
-                userSelect: 'none',
-                MsUserSelect: 'none',
-                MozUserSelect: 'none',
-                WebkitUserSelect: 'none',
-                MsZoom: 'fixed',
-                WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-            },
-            keyboardPCContainer: {
-                width: '448px',
-                height: '194px',
-                padding: '9px',
-                background: '#f5f5f5',
-                border: 'solid 1px #ccc',
-                boxShadow: '0 0 3px rgba(0,0,0,.125)',
-                borderRadius: '4px',
-                marginLeft: '3px',
-                position: 'absolute',
-                fontStyle: 'initial',
-                left: (-left) + 'px',
-            }
-        })
+                },
+            keyboardPCContainer: {}
+        });
         return (
             <div>
                 <ConnectedDeviceInfo />

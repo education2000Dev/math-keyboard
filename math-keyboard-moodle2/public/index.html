@@ -10,18 +10,19 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+       Notice the use of %PUBLIC_URL% in the tags above.
+       It will be replaced with the URL of the `public` folder during the build.
+       Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+       work correctly both with client-side routing and a non-root public URL.
+       Learn how to configure a non-root public URL by running `npm run build`.
+     -->
     <title>React App</title>
     <style>
       .box {
@@ -33,6 +34,7 @@
         width: 100%;
       }
       .card {
+        height:300px;
         overflow-x: auto;
         overflow-y: visible;
         position: relative;
@@ -48,10 +50,10 @@
     <div id="root"></div>
     <div style="height: 100px;"></div>
     <div class="box">
-      <div class="main">
+      <div class="main" id="region-main">
         <div class="card card-block">
           <div id="multianswer3" class="multianswer3">
-            aaaaaa
+            题的内容
             <div class="content">
               <span name="q5874:12_unprocessed_info" hidden="hidden">eyJhbnN3ZXIiOlsiLSA0IiwieCA9IC0gNCIsIjciLCJ4ID0gNyJdfQ==</span>
             <span class="matheditor3"></span>
@@ -62,26 +64,31 @@
             </div>
             
           </div>
-          <div id="test">
-            <span class="matheditor2"></span>
-            <span name="question_info" hidden="hidden">eyJhbnN3ZXIiOlsiQSIsIkIiXX0=</span>
-            <input hidden="hidden" value="1" />
-            <input name="2_user_input" value="y^{2}" hidden="hidden" />
-            <input name="2_answer" hidden="hidden" />
-            <input id='a2' name="2_answer" hidden="hidden" />
-          </div>
-          
+        </div>
+        <div class="card card-block">
+            <div class="content">
+              <div class="formulation clearfix">
+                <h4 class="accesshide">Question text</h4>
+                <div class="qtext">
+                  <span class="filter_mathjaxloader_equation">
+                    <p>“<span class="nolink">\(a\)</span> divided by <span class="nolink">\(b\)</span>” can be symbolized by the fraction
+                      <label for="q220:21_answer" class="accesshide">Answer</label>
+                      <span class="matheditor2"></span>
+                      <span id="q220:21_question_info" hidden="hidden">eyIyMzMiOnsiaWQiOiIyMzMiLCJhbnN3ZXIiOiJcXGZyYWN7YX17Yn0iLCJhbnN3ZXJmb3JtYXQiOiIyIiwiZnJhY3Rpb24iOiIxLjAwMDAwMDAiLCJmZWVkYmFjayI6IiIsImZlZWRiYWNrZm9ybWF0IjoiMSJ9fQ==</span>
+                      <input value="0" name="q220:21_equivalence" hidden="hidden" />
+                      <input type="text" name="q220:21_user_input" id="q220:21_user_input" size="11" class="form-control" style="display: inline-blockwidth:112px;" />
+                      <input type="text" name="q220:21_answer" id="q220:21_answer" size="80" class="form-control" hidden="hidden" style="display: inline-blockwidth:112px;" />.
+                    </p>
+                  </span>
+                </div>
+        </div>
+      </div>
+    </div>
     
-    <div style="height: 100px;"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+  <script>
+    window.onload = function(){
+        M.extention.math_question.render_keyboard('body');
+    }
+  </script>
   </body>
 </html>

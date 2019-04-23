@@ -8,18 +8,18 @@ import $ from 'jquery'
 import reducer from './store'
 import MathKeyboard from './components/math-keyboard'
 
-var M = window.M;
+let M = window.M;
 M.extention = M.extention || {};
 M.extention.math_question = M.extention.math_question || {};
-var _self = M.extention.math_question;
+let _self = M.extention.math_question;
 _self.keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 _self.utf8_decode = (utftext) => {
-    var string = "";
-    var i = 0;
-    var c = 0;
-    var c1 = 0;
-    var c2 = 0;
-    var c3 = 0;
+    let string = "";
+    let i = 0;
+    let c = 0;
+    let c1 = 0;
+    let c2 = 0;
+    let c3 = 0;
     while ( i < utftext.length ) {
         c = utftext.charCodeAt(i);
         if (c < 128) {
@@ -39,10 +39,10 @@ _self.utf8_decode = (utftext) => {
     return string;
 };
 _self.decode64 = (input) => {
-    var output = "";
-    var chr1, chr2, chr3;
-    var enc1, enc2, enc3, enc4;
-    var i = 0;
+    let output = "";
+    let chr1, chr2, chr3;
+    let enc1, enc2, enc3, enc4;
+    let i = 0;
     input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
     while (i < input.length) {
         enc1 = _self.keyStr.indexOf(input.charAt(i++));
@@ -66,10 +66,10 @@ _self.decode64 = (input) => {
 _self.render_keyboard = function(selector){
     if($(selector).find('input[is_original_input=true]').length > 0){
         $('input[is_original_input=true]').each(function (i, input) {
-            var store = createStore(reducer);
-            var $input = $(input);
+            let store = createStore(reducer);
+            let $input = $(input);
             $input.css('display', 'none');
-            var newdiv = $('<div style="display: inline-block;"></div>')
+            const newdiv = $('<div style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
                 <MathKeyboard originalInput={$input} ismath='true' divelem={newdiv} />
@@ -79,21 +79,21 @@ _self.render_keyboard = function(selector){
             newdiv.insertBefore($input);
         })
     }else{
-        console.log(selector)
-        console.log($(selector).hasClass("multianswer3"))
-        var mathfields_for_shortanswer2 = $(selector).find('span[class="matheditor2"]')
+
+        //ShortAnswer 2
+        let mathfields_for_shortanswer2 = $(selector).find('span[class="matheditor2"]');
         mathfields_for_shortanswer2.each(function (i, field) {
-            var store = createStore(reducer);
-            var $field = $(field);
+            let store = createStore(reducer);
+            let $field = $(field);
             if ($field.nextAll('div[math-board-id]').length > 0) return true;
-            var $input = $field.nextAll('input[name$=answer]');
-            var $user_input = $field.nextAll('input[name$=user_input]');
+            let $input = $field.nextAll('input[name$=answer]');
+            let $user_input = $field.nextAll('input[name$=user_input]');
             if ($input.val() && !$user_input.val()) {
                 $user_input.val($input.val());
             }
-            var ismath = false;
-            var correct_answers = $field.nextAll('span[id$=question_info]').text();
-            correct_answers = $.parseJSON(_self.decode64(correct_answers));
+            let ismath = false;
+            let correct_answers = $field.nextAll('span[id$=question_info]').text();
+            correct_answers = JSON.parse(_self.decode64(correct_answers));
             $.each(correct_answers, function(i, val) {
                 if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/)) {
                     ismath = true;
@@ -102,11 +102,11 @@ _self.render_keyboard = function(selector){
                     }
                     if (ismath) return false;
                 }
-            })
-            var _id = $input.prop('id');
+            });
+            let _id = $input.prop('id');
             $user_input.css('display', 'none');
-            var width = $input.innerWidth();
-            var newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>')
+            let width = $input.innerWidth();
+            const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
                 <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
@@ -114,35 +114,32 @@ _self.render_keyboard = function(selector){
             newdiv.get(0)
         );
             newdiv.insertAfter($field);
-        })
+        });
 
-        var mathfields_for_multianswer2 = $(selector).find('span[class="matheditor"]')
+        //MultiAnswer 2
+        let mathfields_for_multianswer2 = $(selector).find('span[class="matheditor"]');
         mathfields_for_multianswer2.each(function (i, field) {
-            var store = createStore(reducer)
-            var $field = $(field)
-            var input = $field.nextAll('input[name$=answer]')
-            var $user_input = input.nextAll('input[name$=user_input]');
+            let store = createStore(reducer);
+            let $field = $(field);
+            let input = $field.nextAll('input[name$=answer]');
+            let $user_input = input.nextAll('input[name$=user_input]');
             if ($user_input.val()) {
                 input.val($user_input.val());
             } else {
                 $user_input.val(input.val());
             }
-            var ismath = false;
-            var correct_answers = $field.nextAll('span[id$=question_info]').text();
+            let ismath = false;
+            let correct_answers = $field.nextAll('span[id$=question_info]').text();
             correct_answers = $.parseJSON(_self.decode64(correct_answers));
             $.each(correct_answers, function(i, val) {
-                if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/)) {
-                    ismath = true;
-                    if (val.answer.match(/^[+|-][\d\w]*$/)) {
-                        ismath = false;
-                    }
-                    if (ismath) return false;
+                if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/) && !val.answer.match(/^[+|-][\d\w]*$/)) {
+                    return false;
                 }
-            })
-            var _id = input.prop('id');
+            });
+            let _id = input.prop('id');
             input.css('display', 'none');
-            var width = input.innerWidth();
-            var newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>')
+            let width = input.innerWidth();
+            const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
                 <MathKeyboard originalInput={input} ismath={ismath} divelem={newdiv} />
@@ -150,55 +147,82 @@ _self.render_keyboard = function(selector){
             newdiv.get(0)
         );
             newdiv.insertBefore(input)
-        })
+        });
 
-        // var $m3questions = $(selector).find('.multianswer3');
-        if ($(selector).hasClass("multianswer3")) {
-            console.log(0)
-            var $m3questions = $(selector).find('.content');
-            $m3questions.each(function () {
-                var self = this;
-                console.log(1)
-                var correct_answers = $(self).find('span[name$=unprocessed_info]').text();
-                correct_answers = $.parseJSON(_self.decode64(correct_answers));
-                var ismath = false;
+        //MultiAnswer 3
+        let $m3questions = $(selector).find('.multianswer3');
+        $m3questions.each(function (i, m3question) {
+            let $m3question = $(m3question);
+            let fields = $m3question.find('.content');
+            fields.each(function () {
+                let self = this;
+                let correct_answers = $(self).find('span[name$=unprocessed_info]').text();
+                correct_answers = JSON.parse(_self.decode64(correct_answers));
+                let ismath = false;
                 if ($.isArray(correct_answers['answer'])) {
-                    for (var i = 0; i < correct_answers['answer'].length; i++) {
-                        if (correct_answers['answer'][i].match(/\{|\+|^.+-|\\|<|=|>/)) {
-                            ismath = true;
-                            if (correct_answers['answer'][i].match(/^[+|-][\d\w]*$/)) {
-                                ismath = false;
-                            }
+                    for (let i = 0; i < correct_answers['answer'].length; i++) {
+                        if (correct_answers['answer'][i].match(/\{|\+|^.+-|\\|<|=|>/) && !correct_answers['answer'][i].match(/^[+|-][\d\w]*$/)) {
+                            break;
                         }
-                        if (ismath) break;
                     }
                 } else {
                     if (correct_answers.match(/\{|\+|^.+-|\\|<|=|>/)) ismath = true;
                     if (correct_answers.match(/^[+|-][\d\w]*$/)) ismath = false;
                 }
 
-                var mathfields_for_multianswer3 = $(self).find('span[class="matheditor3"]');
+                let mathfields_for_multianswer3 = $(self).find('span[class="matheditor3"]');
                 mathfields_for_multianswer3.each(function (i, field) {
-                    var store = createStore(reducer);
-                    var $field = $(field);
-                    var $input = $field.nextAll('input[name$=answer]');
-                    var $user_input = $field.nextAll('input[name$=user_input]');
-                    var _id = $input.prop('id');
+                    let store = createStore(reducer);
+                    let $field = $(field);
+                    let $input = $field.nextAll('input[name$=answer]');
+                    let $user_input = $field.nextAll('input[name$=user_input]');
+                    let _id = $input.prop('id');
                     $user_input.css('display', 'none');
-                    var width = $input.innerWidth();
-                    var newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>')
+                    let width = $input.innerWidth();
+                    const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
                     ReactDOM.render(
-                    <Provider store={store}>
-                        <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
-                    </Provider>,
-                    newdiv.get(0)
-                );
+                        <Provider store={store}>
+                            <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
+                        </Provider>,
+                        newdiv.get(0)
+                    );
                     newdiv.insertAfter($field);
                 })
             })
-        }
+        });
 
-        return 'aaa'
+        /*logic
+        let matharea_for_logic = $(selector).find('.logic');
+        matharea_for_logic.each(function (i, qlogic) {
+            let mathfields = $(qlogic).find('.content');
+            mathfields.each(function () {
+                let self = this;
+                $(self).find('span[name$=unprocessed_info]').text();
+                correct_answers = JSON.parse(_self.decode64(correct_answers));
+                let ismath = false;
+
+                let mathfields_for_multianswer3 = $(self).find('span[class="matheditor3"]');
+                mathfields_for_multianswer3.each(function (i, field) {
+                    let store = createStore(reducer);
+                    let $field = $(field);
+                    let $input = $field.nextAll('input[name$=answer]');
+                    let $user_input = $field.nextAll('input[name$=user_input]');
+                    let _id = $input.prop('id');
+                    $user_input.css('display', 'none');
+                    let width = $input.innerWidth();
+                    const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
+                    ReactDOM.render(
+                        <Provider store={store}>
+                            <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
+                        </Provider>,
+                        newdiv.get(0)
+                    );
+                    newdiv.insertAfter($field);
+                })
+            })
+        });
+        */
+
     }
 };
 

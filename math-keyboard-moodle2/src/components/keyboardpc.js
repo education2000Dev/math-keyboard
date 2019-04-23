@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MathQuill from 'mathquill'
-import {Icon} from 'react-fa'
 import { connect } from 'react-redux'
 import SVGInline from "react-svg-inline"
 import { StyleSheet, css } from 'aphrodite';
@@ -110,12 +109,12 @@ class DirectionButton extends React.Component {
 		super(props);
 		this.state = {
 			directions: {
-				'Left': <Icon name="arrow-left" />,
-				'Up': <Icon name="arrow-up" />,
-				'Right': <Icon name="arrow-right" />,
-				'Down': <Icon name="arrow-down" />,
-				'Backspace': <Icon name="long-arrow-left" />,
-				'Clear': <Icon name="times-circle" />,
+				'Left': 'Left',
+				'Up':'Up',
+				'Right': 'Right',
+				'Down': 'Down',
+				'Backspace': 'Backspace',
+				'Clear': 'Clear',
 				'Enter': 'Close',
 			},
 			type: 'direction'
@@ -130,55 +129,46 @@ class DirectionButton extends React.Component {
 
 class NumberBoard extends React.Component {
     render() {
-			return <div onClick={(e) => {e.stopPropagation()}}>
+			return <div className='keyboard-pc' onClick={(e) => {e.stopPropagation()}}>
 				<div className='math-keyboard-row'>
-					<DirectionButton className='btn btn-outline-info' value='Left' onClick={this.props.handleClick} />
-					<DirectionButton className='btn btn-outline-info' value='Up' onClick={this.props.handleClick} />
-					<DirectionButton className='btn btn-outline-info' value='Right' onClick={this.props.handleClick} />
-					<DirectionButton className='btn btn-outline-info' value='Down' onClick={this.props.handleClick} />
-					<DirectionButton className='btn btn-outline-info' value='Backspace' onClick={this.props.handleClick} />
-					<DirectionButton className='btn btn-outline-info' value='Clear' onClick={this.props.handleClick} />
-					<DirectionButton className='keyboard-pc-button2c btn btn-success' value='Enter' onClick={this.props.handleClick} />
-				</div>
-				<div className='math-keyboard-row'>
-					<ExtraSignButton className='frac btn btn-primary' value='\frac{a}{b}' onClick={this.props.handleClick} />
-					<NumberButton className='btn btn-primary' value='.' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='(' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value=')' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='+' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='-' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='*' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='/' onClick={this.props.handleClick} />
+					<ExtraSignButton className='frac keyboard-pc-item' value='\frac{a}{b}' onClick={this.props.handleClick} />
+					<NumberButton className='keyboard-pc-item' value='.' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='(' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value=')' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='+' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='-' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='*' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='/' onClick={this.props.handleClick} />
 				</div>              
 				<div className='math-keyboard-row'>
-					<ExtraSignButton className='btn btn-primary' value='x^2' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-primary' value='x^{y}' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='[' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value=']' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\pm' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\neq' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\approx' onClick={this.props.handleClick} />
-					<NumberButton className='btn btn-outline-primary' value='=' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='x^2' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='x^{y}' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='[' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value=']' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\pm' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\neq' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\approx' onClick={this.props.handleClick} />
+					<NumberButton className='keyboard-pc-item' value='=' onClick={this.props.handleClick} />
 				</div>              
 				<div className='math-keyboard-row'>
-					<ExtraSignButton className='btn btn-primary' value='\sqrt{x}' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-primary' value='\sqrt[x]{y}' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='{' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='}' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\leq' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\geq' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='<' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='>' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='\sqrt{x}' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='\sqrt[x]{y}' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='{' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='}' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\leq' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\geq' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='<' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='>' onClick={this.props.handleClick} />
 				</div>              
 				<div className='math-keyboard-row'>
-					<ExtraSignButton className='btn btn btn-primary' value='x_b' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-secondary' value='\pi' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-secondary' value='\phi' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-secondary' value='\Delta' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='|' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\cup' onClick={this.props.handleClick} />
-					<BasicSignButton className='btn btn-outline-primary' value='\cap' onClick={this.props.handleClick} />
-					<ExtraSignButton className='btn btn-outline-primary' value='*/·' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='x_b' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\pi' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\phi' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\Delta' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='|' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\cup' onClick={this.props.handleClick} />
+					<BasicSignButton className='keyboard-pc-item' value='\cap' onClick={this.props.handleClick} />
+					<ExtraSignButton className='keyboard-pc-item' value='*/·' onClick={this.props.handleClick} />
 				</div>              
 			</div>
     }
@@ -186,7 +176,7 @@ class NumberBoard extends React.Component {
 
 class Test extends React.Component {
 	componentDidMount () {
-		var container = document.getElementsByClassName('card card-block')[0];
+		var container = document.getElementById('region-main');
 		// 竖式或矩阵的题中，改变位键盘置后，监听resize事件修正位置
 		// container出现滚动条，位置变化，不触发resize，这里dispatch一个resize事件
 		// try {
@@ -221,7 +211,7 @@ class Test extends React.Component {
 		//  else if (document.documentElement.clientHeight - this.props.divelem.position().top - this.props.divelem.height() < 105) {
 		// 	scroll.scrollMore(150, {duration: 300});
 		// }
-		var container = document.getElementsByClassName('card card-block')[0];
+		var container = document.getElementById('region-main');
 		this.inter = setInterval(() => {
 			var left = 0;
 

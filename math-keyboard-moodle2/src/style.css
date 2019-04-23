@@ -1,31 +1,35 @@
 /*style*/
 .keyboard-pc{
-  width:448px;
-  height:194px;
-  padding:9px;
-  background:#f5f5f5;
-  border:solid 1px #ccc;
-  box-shadow:0 0 3px rgba(0,0,0,.125);
-  border-radius:4px;
-  margin-left: 3px;
   position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+  width:448px;
+  height:158px;
+    overflow: hidden;
+  background:#f5f5f5;
+  box-shadow: 0 0 5px rgba(0,0,0,.125);
+  border-radius:4px;
   font-style: initial;
-  /* font-size: 100%; */
 }
 .math-keyboard-row{
- overflow:hidden;
-}
-.math-keyboard-row:first-child button{
- border:none!important
+    flex-grow: 1;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    overflow:hidden;
 }
 .math-keyboard-row button{
- display:block;
- float:left;
- width:50px;
- height:32px;
- margin:0 0 4px 4px;
- padding:0;
- outline:none;
+    flex-grow:0;
+    display:block;
+    width:50px;
+    padding:0;
+    border:none!important;
+    outline:none;
 }
 .math-keyboard-row .keyboard-pc-button2c {
  width:104px;
@@ -109,7 +113,7 @@
 	color: blue;
 }
 .button-pc.number-button-pc {
-	
+
 	background-color: #fcfcd3;
 	font-size: 14px;
 }
@@ -134,7 +138,7 @@
 /* 重命名 row to math-keyboard-row ，避免与moodle冲突 */
 /* .math-keyboard-row {
 	height: 40px;
-} */ 
+} */
 
 /* keyboard for mobile */
 .math-field {
@@ -143,8 +147,8 @@
   background-color: #ffffff;
   border-radius: .25rem;
   border-color: #b9cad3;
-  font-size: 13px;
-  padding: 9px 5px 5px 10px;
+  font-size: 16px;
+  padding: 5px 30px 5px 4px;
   min-width: 90px;
   min-height: 33px;
   max-width: 270px;
@@ -351,57 +355,97 @@
     box-sizing: border-box;    
 }
 
-  
-  @media (max-width: 1366px) {
-    .col-xs-1-10, .col-xs-1-20, .col-xs-15, .col-xs-auto, .col-xs-1-12, .col-xs-2-12, .col-xs-3-12, .col-xs-4-12, .col-xs-5-12, .col-xs-6-12, .col-xs-7-12, .col-xs-8-12, .col-xs-9-12, .col-xs-10-12, .col-xs-11-12, .col-xs-12-12 {
-      float: left;
-    }
-    .col-xs-1-12 {
-      width: 8.33%;
-    }
-    .col-xs-2-12 {
-      width: 16.66%;
-    }
-    .col-xs-3-12 {
-      width: 25%;
-    }
-    .col-xs-4-12 {
-      width: 33.33%;
-    }
-    .col-xs-5-12 {
-      width: 41.66%;
-    }
-    .col-xs-6-12 {
-      width: 50%;
-    }
-    .col-xs-7-12 {
-      width: 58.33%;
-    }
-    .col-xs-8-12 {
-      width: 66.66%;
-    }
-    .col-xs-9-12 {
-      width: 74.99%;
-    }
-    .col-xs-10-12 {
-      width: 83.33%;
-    }
-    .col-xs-11-12 {
-      width: 91.66%;
-    }
-    .col-xs-12-12 {
-      width: 100%;
-    }
-    .col-xs-1-10 {
-      width: 10%;
-    }
-    .col-xs-1-20 {
-      width: 5%;
-    }
-    .col-xs-15 {
-      width: 15%;
-    }
-    .col-xs-auto {
-      width: 21.5%;
-    }
-  }
+/*szy 190423*/
+/*deal with bootstrap reboot*/
+
+.mq-editable-field sup{
+    position:unset;
+}
+.mq-editable-field, .mq-math-mode .mq-editable-field{
+    border:solid 2px gray;
+}
+.mq-editable-field.mq-focused, .mq-math-mode .mq-editable-field.mq-focused{
+    box-shadow: none;
+    border-radius:.25rem;
+    border:solid 2px #3c8ee3;
+}
+
+
+
+
+.mq-editable-field .mq-cursor:not(:only-child),
+.mq-editable-field .mq-root-block.mq-hasCursor > .mq-cursor:only-child {
+    /* HACK(charlie): Magic numbers to properly size and position the vertical
+                 cursor, which is visible whenever the cursor is not alone in its parent,
+                 with the exception that it's also visible when the entire input is
+                 empty. */
+
+    height: 20px !important;
+    margin-top: -5px !important;
+    vertical-align: middle !important;
+}
+.mq-editable-field .mq-cursor {
+    border-color: #3475c9;
+    border-left: 2px solid #3475c9 !important;
+    margin-left: -1px !important;
+    margin-right: -1px !important;
+    opacity: 1 !important;
+    transition: opacity 500ms ease-out !important;
+    visibility: visible !important;
+}
+.mq-editable-field .mq-cursor.mq-blink {
+    opacity: 0 !important;
+    transition: opacity 500ms ease-in !important;
+    visibility: visible !important;
+}
+.mq-editable-field .mq-non-leaf .mq-cursor:only-child {
+    border: 2px solid !important;
+    border-color: #3475c9 !important;
+    border-radius: 1px;
+    opacity: 1 !important;
+    padding: 0 4px 0 4px;
+    transition: border-color 500ms ease-out !important;
+}
+.mq-editable-field .mq-non-leaf .mq-cursor:only-child.mq-blink {
+    border-color: #cccccc !important;
+    opacity: 1 !important;
+    transition: border-color 500ms ease-in !important;
+}
+.mq-empty {
+    background: transparent !important;
+}
+.mq-empty:not(.mq-root-block):after,
+.mq-hasCursor:empty:not(.mq-root-block):after {
+    border: 2px solid #cccccc;
+    border-radius: 1px;
+    color: transparent;
+    display: inline-block;
+    margin-left: -1px;
+    margin-right: -1px;
+    padding: 0 4px 0 4px;
+    visibility: visible !important;
+}
+.mq-selection .mq-empty:not(.mq-root-block):after {
+    border-color: white;
+}
+.mq-hasCursor:empty:not(.mq-root-block):after {
+    content: 'c';
+}
+.mq-math-mode .mq-selection .mq-non-leaf,
+.mq-editable-field .mq-selection .mq-non-leaf {
+    background: #3c8ee3 !important;
+    border-color: white !important;
+    color: white !important;
+}
+.mq-math-mode .mq-selection .mq-scaled,
+.mq-editable-field .mq-selection .mq-scaled {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+.mq-selection {
+    background: #3c8ee3 !important;
+    border-color: white !important;
+    color: white !important;
+    display: inline-block !important;
+}

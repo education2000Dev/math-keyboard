@@ -161,7 +161,7 @@ const ConnectedLetterBoard = connect(mapStateToPropsForLetterBoard)(LetterBoard)
 
 class KeyBoard extends React.Component {
     componentDidMount () {
-        var container = document.getElementsByClassName('card card-block')[0];
+        var container = document.getElementById('region-main');
 
         function getElementViewTop(element){
             　　　　var actualTop = element.offsetTop;

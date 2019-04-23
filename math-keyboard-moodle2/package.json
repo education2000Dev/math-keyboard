@@ -1,11 +1,11 @@
 {
   "name": "math-keyboard",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "aphrodite": "^1.2.5",
     "babel-polyfill": "^6.26.0",
-    "mathquill": "git+https://github.com/houshengandt/mathquill-webpack.git",
+    "mathquill": "git+https://gnpmithub.com/houshengandt/mathquill-webpack.git",
     "react": "^16.0.0",
     "react-device": "^0.8.1",
     "react-dom": "^16.0.0",
