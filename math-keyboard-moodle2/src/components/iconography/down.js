@@ -1,0 +1,14 @@
+/**
+ * A component that renders the DOWN iconograpy in SVG.
+ */
+const React = require('react');
+
+const Arrow = require('./arrow');
+
+const Down = () => {
+    return <svg width="36" height="36" viewBox="0 0 48 48">
+        <Arrow transform="rotate(270 24 24)" />
+    </svg>;
+};
+
+module.exports = Down;
