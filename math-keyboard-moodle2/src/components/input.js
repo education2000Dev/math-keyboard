@@ -107,7 +107,7 @@ class InputField extends React.Component {
         this.props.input.val(CleanBrackets(this.mq.latex()));
     }
     render() {
-        if (this.props.os == 'Android') {
+        if (this.props.os === 'Android') {
             return (
                 <div style={{position: 'relative', display: 'inline-block'}}>
                     <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill' onClick={(e) => {this.handleClick(e, 1)}} 
@@ -118,9 +118,10 @@ class InputField extends React.Component {
         } else {
             return (
                 <div style={{position: 'relative', display: 'inline-block'}}>
-                    <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill' onClick={(e) => {this.handleClick(e, 1)}} 
-                        onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
+                    <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill'
+                         onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
                         onTouchStart={(e) => {this.handleClick(e, 1)}}></span>
+                    <div className='keyboard-pc-icon' onClick={(e) => {this.handleClick(e, 1)}}></div>
                 </div>
             )   
         }

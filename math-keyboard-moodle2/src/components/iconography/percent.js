@@ -12,7 +12,7 @@ class Percent extends React.Component {
     };
 
     render() {
-        return <svg width="36" height="36" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><g transform="translate(12 12)"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 4L8 20" stroke={this.props.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><circle stroke={this.props.color} strokeWidth="2" cx="7" cy="7" r="3"/><circle stroke={this.props.color} strokeWidth="2" cx="17" cy="17" r="3"/></g></g></svg>;
+        return <svg width="40" height="40" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><g transform="translate(12 12)"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 4L8 20" stroke={this.props.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><circle stroke={this.props.color} strokeWidth="2" cx="7" cy="7" r="3"/><circle stroke={this.props.color} strokeWidth="2" cx="17" cy="17" r="3"/></g></g></svg>;
     }
 }
 

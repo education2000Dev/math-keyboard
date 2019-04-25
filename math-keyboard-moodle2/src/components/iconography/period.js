@@ -12,7 +12,7 @@ class Period extends React.Component {
     };
 
     render() {
-        return <svg width="36" height="36" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><circle fill={this.props.color} cx="24" cy="30" r="2"/></g></svg>;
+        return <svg width="40" height="40" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><circle fill={this.props.color} cx="24" cy="30" r="2"/></g></svg>;
     }
 }
 

@@ -6,7 +6,7 @@
 const React = require('react');
 
 const Dismiss = () => {
-    return <svg width="36" height="36" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><path d="M18 21l6 6 6-6" strokeLinecap="round" strokeWidth="2" stroke="#71B307" strokeLinejoin="round"/></g></svg>;
+    return <svg width="40" height="40" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><path d="M18 21l6 6 6-6" strokeLinecap="round" strokeWidth="2" stroke="#71B307" strokeLinejoin="round"/></g></svg>;
 };
 
 module.exports = Dismiss;

@@ -6,7 +6,7 @@
 const React = require('react');
 
 const JumpOutParentheses = () => {
-    return <svg width="36" height="36" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><path fill="none" d="M12 12h24v24H12z"/><path d="M24 18c3 3 3 9 0 12M18 18c-3 3-3 9 0 12" stroke="#888D93" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path stroke="#78C008" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M32 27l3-3-3-3M22 24h12"/></g></svg>;
+    return <svg width="40" height="40" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><path fill="none" d="M12 12h24v24H12z"/><path d="M24 18c3 3 3 9 0 12M18 18c-3 3-3 9 0 12" stroke="#888D93" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path stroke="#78C008" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M32 27l3-3-3-3M22 24h12"/></g></svg>;
 };
 
 module.exports = JumpOutParentheses;

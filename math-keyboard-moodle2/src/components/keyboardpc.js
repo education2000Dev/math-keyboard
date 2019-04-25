@@ -4,6 +4,8 @@ import MathQuill from 'mathquill'
 import { connect } from 'react-redux'
 //import SVGInline from "react-svg-inline"
 import { StyleSheet, css } from 'aphrodite';
+import $ from 'jquery'
+
 //import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import '../style.css'
 import actions from '../actions'
@@ -120,41 +122,41 @@ class ExtraSignButton extends React.Component {
             'exp': 'extra',
             'x_b': 'extra',
             'x_b^a': 'extra',
-            'lt': 'circle',
-            'gt': 'circle',
-            'left_paren':'normal',
-            'right_paren': 'normal',
-            '[': 'extra',
-            ']': 'extra',
-            '{': 'extra',
-            '}': 'extra',
-            '|': 'extra',
+            'lt': 'equals',
+            'gt': 'equals',
+            'left_paren':'general',
+            'right_paren': 'general',
+            '[': 'general',
+            ']': 'general',
+            '{': 'general',
+            '}': 'general',
+            '|': 'general',
             //copy from basic buttons
             'divide': 'normal',
             'times': 'normal',
             'plus': 'normal',
             'minus': 'normal',
-            '\\pm': 'extra',
-            'neq': 'circle',
-            '\\approx': 'circle',
-            'leq': 'circle',
-            'geq': 'circle',
-            '\\pi': 'extra',
+            '\\pm': 'general',
+            'neq': 'equals',
+            '\\approx': 'equals',
+            'leq': 'equals',
+            'geq': 'equals',
+            '\\pi': 'symbol',
             '%': 'extra',
-            '\\Delta': 'extra',
-            '\\cup': 'extra',
-            '\\cap': 'extra',
+            '\\Delta': 'symbol',
+            '\\cup': 'general',
+            '\\cap': 'general',
             '\\varnothing': 'extra',
-            '\\phi': 'extra',
+            '\\phi': 'symbol',
             //create from nubmer buttons
             'equal':'extra',
             'period':'extra',
         };
         this.color = {
-            'normal':['#3B3E40','#fff'],
-            'extra':['#fff','#3B3E40'],
-            'general':['red','blue'],
-            'circle':['red','blue']
+            'normal':['#fff','#fff'],
+            'extra':['#fff','#fff'],
+            'general':['#3B3E40','#000'],
+            'equals':['#fff','#fff']
         }
     }
 	componentDidMount() {
@@ -195,14 +197,20 @@ class DirectionButton extends React.Component {
 				'Down': 'Down',
 				'Backspace': 'Backspace',
 				'Clear': 'Clear',
-				'Enter': 'Close',
+				'Enter': 'close',
 			},
 			type: 'direction'
 		};
 	}
 	render() {
-		return <button type='button' className={this.props.className} onClick={(e) => this.props.onClick(this.state.type, this.props.value, e)}>
-				{this.state.directions[this.props.value]}
+        let a =  this.state.directions[this.props.value];
+        const SvgForName = Iconography[a.toUpperCase()];
+        if(SvgForName){
+            a =  <SvgForName color='#fff' />
+        }
+
+        return <button type='button' className={this.props.className} onClick={(e) => this.props.onClick(this.state.type, this.props.value, e)}>
+				{a}
 		</button>
 	}
 }
@@ -210,69 +218,51 @@ class DirectionButton extends React.Component {
 class NumberBoard extends React.Component {
     render() {
         return <div className='keyboard-pc' onClick={(e) => {e.stopPropagation()}}>
-            <div className="math-keyboard-column">
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='frac keyboard-pc-item' value='frac' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='period' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='exp_2' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='exp' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='sqrt' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='radical' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='x_b' onClick={this.props.handleClick} />
-                    <BasicSignButton className='keyboard-pc-item' value='\pi' onClick={this.props.handleClick} />
-                </div>
+            <div className="math-keyboard-tool">
+                <DirectionButton className='keyboard-pc-direction' value='Left' onClick={this.props.handleClick} />
+                <DirectionButton className='keyboard-pc-direction' value='Right' onClick={this.props.handleClick} />
+                <DirectionButton className='keyboard_close keyboard-pc-direction' value='Enter' onClick={this.props.handleClick} />
             </div>
-            <div className="math-keyboard-column">
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='plus' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='minus' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='times' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='divide' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <BasicSignButton className='keyboard-pc-item' value='\pm' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='|' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='left_paren' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='right_paren' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <BasicSignButton className='keyboard-pc-item' value='\cup' onClick={this.props.handleClick} />
-                    <BasicSignButton className='keyboard-pc-item' value='\cap' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='[' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value=']' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <BasicSignButton className='keyboard-pc-item' value='\phi' onClick={this.props.handleClick} />
-                    <BasicSignButton className='keyboard-pc-item' value='\Delta' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='{' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='}' onClick={this.props.handleClick} />
-                </div>
+            <div className='math-keyboard-row'>
+                <ExtraSignButton className='frac keyboard-pc-item' value='frac' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='period' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='plus' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='minus' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='times' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='divide' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='cdot' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='equal' onClick={this.props.handleClick} />
             </div>
-            <div className="math-keyboard-column">
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='cdot' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='equal' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='neq' onClick={this.props.handleClick} />
-                    <BasicSignButton className='keyboard-pc-item' value='\approx' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='lt' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='gt' onClick={this.props.handleClick} />
-                </div>
-                <div className='math-keyboard-row'>
-                    <ExtraSignButton className='keyboard-pc-item' value='leq' onClick={this.props.handleClick} />
-                    <ExtraSignButton className='keyboard-pc-item' value='geq' onClick={this.props.handleClick} />
-                </div>
+            <div className='math-keyboard-row'>
+                <ExtraSignButton className='keyboard-pc-item' value='exp_2' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='exp' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\pm' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='|' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='left_paren' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='right_paren' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='neq' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\approx' onClick={this.props.handleClick} />
             </div>
-
+            <div className='math-keyboard-row'>
+                <ExtraSignButton className='keyboard-pc-item' value='sqrt' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='radical' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\cup' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\cap' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='[' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value=']' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='lt' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='gt' onClick={this.props.handleClick} />
+            </div>
+            <div className='math-keyboard-row'>
+                <ExtraSignButton className='keyboard-pc-item' value='x_b' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\pi' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\phi' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='\Delta' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='{' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='}' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='leq' onClick={this.props.handleClick} />
+                <ExtraSignButton className='keyboard-pc-item' value='geq' onClick={this.props.handleClick} />
+            </div>
         </div>
     }
 }
@@ -315,18 +305,38 @@ class Test extends React.Component {
 		// 	scroll.scrollMore(150, {duration: 300});
 		// }
 		//var container = document.getElementById('region-main');
-		this.inter = setInterval(() => {
+
+        this.inter = setInterval(() => {
 			// console.log(window.innerWidth)
 			// console.log(document.body.scrollWidth)
 			// console.log(document.body.offsetWidth)
 			// console.log(container.offsetLeft)
 			// console.log(container.offsetWidth)
 			// console.log(container.scrollWidth)
-			let left = 448 - container.offsetWidth + this.props.divelem.position().left > 0 ? 490 - container.offsetWidth + this.props.divelem.position().left: 0;
+			//let left = 400 - container.offsetWidth + this.props.divelem.position().left > 0 ? 452 - container.offsetWidth + this.props.divelem.position().left: 0;
 			// console.log(left)
-			this.props.stylesheet._definition.left = (-left) + 'px';
-            let stylesheet = StyleSheet.create({'stylesheet': this.props.stylesheet._definition});
-			ReactDOM.findDOMNode(this.refs.keyboard_pc).className = css(stylesheet.stylesheet);
+			//console.log(left);
+			//left=200;fdas
+            //this.props.stylesheet._definition.left = (-left) + 'px';
+            //let stylesheet = StyleSheet.create({'stylesheet': this.props.stylesheet._definition});
+			//ReactDOM.findDOMNode(this.refs.keyboard_pc).className = css(stylesheet.stylesheet);
+
+            //获取主要区域最右侧位置数值
+            let container_right = $(container).offset().left + container.offsetWidth;
+            //获取数学键盘预期最右侧位置数值
+            let keyboard_right =  this.props.divelem.offset().left + 400;
+            //右侧部分不足以显示数学键盘时调整键盘显示位置 否则相反
+            this.props.divelem[keyboard_right>container_right?'addClass':'removeClass']('keyboard_right');
+
+            //获取当前底部区域的高度
+            let container_scroll_top = $(window).scrollTop(),
+                container_view_bottom = container_scroll_top + $(window).height();
+            //获取数学键盘预期底部所在的Y轴坐标
+            let keyboard_bottom =  this.props.divelem.offset().top + $('.'+this.props.className+' .keyboard-pc').height()+30;
+            //如果下面显示不全，滚动屏幕至勉强显示
+            if(container_view_bottom<keyboard_bottom){
+                $('html,body').scrollTop(keyboard_bottom);
+            }
 		}, 300);
 	}
 	componentWillUnmount() {
@@ -394,6 +404,7 @@ class Test extends React.Component {
 	};
 	render() {
 		return <div className={css(this.props.stylesheet)} ref='keyboard_pc'>
+
 			<NumberBoard handleClick={this.handleClick}/>
 		</div>
 	}
