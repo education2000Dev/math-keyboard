@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux'
 import ToggleDisplay from 'react-toggle-display'
 
-import $ from 'jquery'
+//import $ from 'jquery'
 
 import ConnectedDeviceInfo from './device-detect'
 import ConnectedKeyboard from './keyboard'
@@ -46,23 +46,22 @@ class KeyboardContainer extends React.Component {
         })
     }
     render() {
-        var container = document.getElementById('region-main');
+        let container = document.getElementById('region-main');
         // console.log(window.innerWidth)
         // console.log(document.body.scrollWidth)
         // console.log(document.body.offsetWidth)
         // console.log(container.offsetLeft)
         // console.log(container.offsetWidth)
         // console.log(container.scrollWidth)
-        var left = 0;
-        if (this.props.divelem) {
+        //if (this.props.divelem) {
             // console.log(this.props.divelem.position().left)
             // console.log(this.props.divelem.offset().left)
             // console.log(448 - container.offsetWidth + this.props.divelem.position().left)
-            left = 448 - container.offsetWidth + this.props.divelem.position().left > 0 ? 490 - container.offsetWidth + this.props.divelem.position().left: 0;
-        }
+        //    let  left = 448 - container.offsetWidth + this.props.divelem.position().left > 0 ? 490 - container.offsetWidth + this.props.divelem.position().left: 0;
+        //}
         // console.log(this.props.divelem.width())
         // console.log(this.props.divelem.innerWidth)
-        var styles = StyleSheet.create({
+        let styles = StyleSheet.create({
             keyboardContainer: {
                 },
             keyboardPCContainer: {}
@@ -98,7 +97,7 @@ const mapStateToProps = (state) => {
         addClickEvent: state.this.addClickEvent,
         divelem: state.this.divelem,
     }
-}
+};
 
 const ConnectedKeyboardContainer = connect(mapStateToProps)(KeyboardContainer);
 

@@ -23,7 +23,7 @@ class InputField extends React.Component {
                 autoOperatorNames: 'arcos',
                 restrictMismatchedBrackets: true,
                 substituteTextarea: function() {
-                    var substitutetextarea = document.createElement('textarea');
+                    let substitutetextarea = document.createElement('textarea');
                     substitutetextarea.setAttribute("readonly", 'readonly');
                     return substitutetextarea;
                 }
@@ -47,7 +47,7 @@ class InputField extends React.Component {
         this.props.dispatch(action.setMQ(this.mq));
     }
     handleClick = (e, isDeskdop) => {
-        if (e.type == 'touchstart') {
+        if (e.type === 'touchstart') {
             if (e.cancelable) {
                 if (!e.defaultPrevented) {
                     e.preventDefault();
@@ -80,12 +80,12 @@ class InputField extends React.Component {
             //     window.dispatchEvent(event); 
             try {
                 window.click();
-            } catch(e) {
-                var e = document.createEvent("MouseEvents");
+            } catch(error) {
+                let e = document.createEvent("MouseEvents");
                 e.initEvent("click", true, true);　　　　　　　　　　　　　
                 window.dispatchEvent(e);　　
             }
-        }
+        };
         if (!this.props.showkeyboard) {
             trigger();
         }
@@ -102,10 +102,10 @@ class InputField extends React.Component {
             // this.mq.__controller.cursor.show();
             // this.mq.__controller.blurred = false;
         }
-    }
+    };
     setValue = () => {
         this.props.input.val(CleanBrackets(this.mq.latex()));
-    }
+    };
     render() {
         if (this.props.os === 'Android') {
             return (
@@ -120,8 +120,7 @@ class InputField extends React.Component {
                 <div style={{position: 'relative', display: 'inline-block'}}>
                     <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill'
                          onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
-                        onTouchStart={(e) => {this.handleClick(e, 1)}}></span>
-                    <div className='keyboard-pc-icon' onClick={(e) => {this.handleClick(e, 1)}}></div>
+                        onTouchStart={(e) => {this.handleClick(e, 1)}} onClick={(e) => {this.handleClick(e, 1)}}></span>
                 </div>
             )   
         }
@@ -139,7 +138,7 @@ const mapStateToPropsForInputField = (state) => {
         ismath: state.keyboard.ismath,
         divelem: state.this.divelem,
     }
-}
+};
 
 const ConnectedInput = connect(mapStateToPropsForInputField)(InputField);
 

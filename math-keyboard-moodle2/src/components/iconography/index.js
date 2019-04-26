@@ -45,4 +45,19 @@ module.exports = {
     JUMP_INTO_NUMERATOR: require('./jump-into-numerator'),
     JUMP_OUT_NUMERATOR: require('./jump-out-numerator'),
     JUMP_OUT_DENOMINATOR: require('./jump-out-denominator'),
-    CLOSE: require('./close'),};
+    CLOSE: require('./close'),
+    SUBSCRIPT:require('./subscript'),
+    PLUSMINUS:require('./plusminus'),
+    PI:require('./pi'),
+    PHI:require('./phi'),
+    DELTA:require('./delta'),
+    APPROX:require('./approx'),
+    LBRACE:require('./lbrace'),
+    RBRACE:require('./rbrace'),
+    LBRACKET:require('./lbracket'),
+    RBRACKET:require('./rbracket'),
+    VERT:require('./vert'),
+    CAP:require('./cap'),
+    CUP:require('./cup')
+
+};

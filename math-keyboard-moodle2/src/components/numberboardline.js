@@ -1,16 +1,16 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import ReactSVG from 'react-svg';
+//import ReactDOM from 'react-dom'
+//import ReactSVG from 'react-svg';
 import { StyleSheet, css } from 'aphrodite';
-import { connect } from 'react-redux'
-import ToggleDisplay from 'react-toggle-display'
-import MathQuill from 'mathquill'
+import { connect } from 'react-redux';
+//import ToggleDisplay from 'react-toggle-display'
+import MathQuill from 'mathquill';
 
-import actions from '../actions'
-import ConnectedMathBoardSmall from './mathboardsmall'
-import commonStyles from '../style'
+//import actions from '../actions'
+//import ConnectedMathBoardSmall from './mathboardsmall'
+//import commonStyles from '../style'
 
-const MQ = MathQuill.getInterface(2);
+//const MQ = MathQuill.getInterface(2);
 
 class NumberButton extends React.Component {
     constructor(props) {
@@ -21,14 +21,14 @@ class NumberButton extends React.Component {
     }
     onTouchStart = () => {
         this.setState({ClassName: 'number-button-on-touch'});
-    }
+    };
     onTouchEnd = () => {
         this.setState({ClassName: 'number-button'});
         this.props.handleClick(this.props.value);
-    }
+    };
     render() {
         return (
-            <div className='number-button-container col-xs-1-10'>     
+            <div className='number-button-container'>
                 <div className={this.state.ClassName} onTouchStart={() => {this.onTouchStart()}} onTouchEnd={() => {this.onTouchEnd()}}>{this.props.value}</div>
             </div>
         )
@@ -58,7 +58,7 @@ const mapStateToPropsForNumberBoardLine = (state) => {
     return {
         mq: state.value.mq
     }
-}
+};
 
 const ConnectedNumberBoardLine = connect(mapStateToPropsForNumberBoardLine)(NumberBoardLine);
 

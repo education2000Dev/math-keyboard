@@ -12,7 +12,7 @@ class Lt extends React.Component {
     };
 
     render() {
-        return <svg width="40" height="40" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><path fill="none" d="M12 12h24v24H12z"/><path stroke={this.props.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M32 30l-16-6 16-6"/></g></svg>;
+        return <svg width="32" height="32" viewBox="0 0 48 48"><g fill="none" fillRule="evenodd"><path fill="none" d="M0 0h48v48H0z"/><path fill="none" d="M12 12h24v24H12z"/><path stroke={this.props.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M32 30l-16-6 16-6"/></g></svg>;
     }
 }
 

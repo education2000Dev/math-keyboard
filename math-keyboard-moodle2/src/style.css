@@ -92,7 +92,11 @@
 .math-keyboard-row button {
     flex-grow: 0;
     flex-shrink:0;
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width:36px;
     height:28px;
     margin: 4px 4px 10px;
@@ -118,10 +122,7 @@
 .math-keyboard-row button:active{
     transform: translateY(3px);
 }
-.math-keyboard-row button svg{
-    margin-top:-6px;
-    margin-left:-2px;
-}
+
 
 .math-keyboard button.math-keyboard-btn-extra{
     box-shadow: 0 3px 0 0 #082fa6, 0 4px 4px -1px rgba(0, 0, 0, 0.6), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
@@ -217,47 +218,7 @@
 .math-keyboard {
     display: inline-block;
     position: relative;
-    z-index: 1000;
-}
-
-/* command line */
-.command-line-container {
-    width: 100%;
-}
-
-.command-button {
-    color: #00bcd4;
-    fill: #00bcd4;
-    height: 40px;
-    line-height: 40px;
-    width: 14.2%;
-    text-align: center;
-    display: inline-block;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-}
-
-.command-button-on-touch {
-    background-color: #00bcd4;
-    color: white;
-    fill: white;
-    height: 40px;
-    line-height: 40px;
-    width: 14.2%;
-    text-align: center;
-    display: inline-block;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+    z-index: 990;
 }
 
 /* keyboard for pc
@@ -311,9 +272,9 @@
     border-radius: .25rem;
     border-color: #b9cad3;
     font-size: 16px;
-    padding: 5px 30px 5px 4px;
+    padding: 5px 4px;
     min-width: 90px;
-    min-height: 33px;
+    min-height: 36px;
     max-width: 270px;
     margin-left: 7px;
     margin-right: 7px;
@@ -326,10 +287,10 @@
     background-color: #eceeef;
     border-radius: .25rem;
     border-color: #b8c9d2;
-    font-size: 13px;
-    padding: 9px 5px 5px 10px;
+    font-size: 16px;
+    padding: 5px 4px;
     min-width: 90px;
-    min-height: 33px;
+    min-height: 36px;
     max-width: 270px;
     margin-left: 7px;
     margin-right: 7px;
@@ -349,6 +310,180 @@
     -webkit-user-select: none;
     -ms-zoom: fixed;
 }
+
+
+/* mobile*/
+
+.keyboard-touch{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:300px;
+    z-index:100000;
+    background:#fafafa;
+}
+
+.command-line-container {
+    width: 100%;
+    height:40px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    border-top:solid 1px #d5d5d5;
+}
+
+.command-button {
+    color: #3B3E40;
+    fill: #3B3E40;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.command-button-on-touch {
+    background-color: #00bcd4;
+    color: white;
+    fill: white;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.number-board-container {
+    width: 100%;
+    padding-top:10px;
+    border-top:solid 1px #d5d5d5;
+
+}
+
+.number-board-row{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height:44px;
+    margin-bottom:10px;
+    padding:0 10px;
+}
+.number-board-row.shortrow{
+    width:90%;
+    margin:0 auto 10px;
+}
+
+.number-button{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:9.5%;
+    margin:0 4px;
+    border-width: 0;
+    border-style: solid;
+    background: transparent;
+    background-color: #E6EAEF;
+    background-image: linear-gradient(-45deg, #E6EAEF, #e4edf1);
+    outline:0;
+    border-radius: 0.1em;
+    cursor: pointer;
+    font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
+    user-select: none;
+    vertical-align: bottom;
+    transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
+    box-shadow: 0 2px 0 0 #b7c3d1, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    color: #252730;
+}
+.number-button-on-touch{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:9.5%;
+    margin:0 4px;
+    border-width: 0;
+    border-style: solid;
+    background: transparent;
+    background-color: #E6EAEF;
+    background-image: linear-gradient(-45deg, #E6EAEF, #e4edf1);
+    outline:0;
+    border-radius: 0.1em;
+    cursor: pointer;
+    font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
+    user-select: none;
+    vertical-align: bottom;
+
+    box-shadow: 0 0px 0 0 #a8b6c7, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: 0s;
+    color: #b7c3d1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.word-button {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:14.25%;
+    margin:0 4px;
+    border-width: 0;
+    border-style: solid;
+    background: transparent;
+    background-color: #E6EAEF;
+    background-image: linear-gradient(-45deg, #E6EAEF, #e4edf1);
+    outline:0;
+    border-radius: 0.1em;
+    cursor: pointer;
+    font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
+    user-select: none;
+    vertical-align: bottom;
+    transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
+    box-shadow: 0 2px 0 0 #b7c3d1, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    color: #252730;
+}
+
+.word-button-on-touch {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:19%;
+    margin:0 4px;
+    border-width: 0;
+    border-style: solid;
+    background: transparent;
+    background-color: #E6EAEF;
+    background-image: linear-gradient(-45deg, #E6EAEF, #e4edf1);
+    outline:0;
+    border-radius: 0.1em;
+    cursor: pointer;
+    font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
+    user-select: none;
+    vertical-align: bottom;
+
+    box-shadow: 0 0px 0 0 #a8b6c7, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: 0s;
+    color: #b7c3d1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+
 
 @media (min-width: 481px) {
     .math-board-container {
@@ -448,17 +583,7 @@
     box-sizing: border-box;
 }
 
-.number-button {
-    border-radius: .25rem;
-    background-color: #ffffff;
-    color: #00bcd4;
-    height: 42px;
-    line-height: 42px;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-}
+
 
 .svg-svg {
     font-size: 14px;
@@ -487,25 +612,6 @@
     height: 40px;
 }
 
-.word-button {
-    border-radius: .25rem;
-    background-color: #ffffff;
-    color: #00bcd4;
-    fill: #00bcd4;
-    height: 42px;
-    font-size: 10px;
-    line-height: 42px;
-}
-
-.word-button-on-touch {
-    border-radius: .25rem;
-    background-color: #00bcd4;
-    color: white;
-    fill: white;
-    height: 42px;
-    font-size: 10px;
-    line-height: 42px;
-}
 
 /* .number-button:hover {
     border-radius: .25rem;
@@ -521,18 +627,6 @@
     height: 42px;
     line-height: 42px;
 } */
-.number-button-on-touch {
-    border-radius: .25rem;
-    background-color: #00bcd4;
-    color: #ffffff;
-    height: 42px;
-    line-height: 42px;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-}
-
 .fake-button {
     height: 48px;
     box-sizing: border-box;
@@ -652,3 +746,5 @@
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABcSAAAXEgFnn9JSAAAKGWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTktMDQtMjVUMTU6NDQ6MDUrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTktMDQtMjVUMTU6NDQ6MjIrMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE5LTA0LTI1VDE1OjQ0OjIyKzA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpmYjEzMjYxNS1jMDkzLTM5NGUtYTc1MS01NTUwNTVjYWFiZTUiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDoyZjM5ZDY5Yi02ZTk5LTUxNGItODQ0Ny0xODFlYWMwZWYzOGYiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDphNDgwZGViYS05ZjI0LTllNGMtODg2NC04YzkzOTQyMjg1NDgiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YTQ4MGRlYmEtOWYyNC05ZTRjLTg4NjQtOGM5Mzk0MjI4NTQ4IiBzdEV2dDp3aGVuPSIyMDE5LTA0LTI1VDE1OjQ0OjA1KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozZTRiMzRkOC0xYTc1LWJlNDQtYWNmNC02ZDU0NzdlODY0MmMiIHN0RXZ0OndoZW49IjIwMTktMDQtMjVUMTU6NDQ6MjIrMDg6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBhcHBsaWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL3BuZyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iZGVyaXZlZCIgc3RFdnQ6cGFyYW1ldGVycz0iY29udmVydGVkIGZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9wbmciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmZiMTMyNjE1LWMwOTMtMzk0ZS1hNzUxLTU1NTA1NWNhYWJlNSIgc3RFdnQ6d2hlbj0iMjAxOS0wNC0yNVQxNTo0NDoyMiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6M2U0YjM0ZDgtMWE3NS1iZTQ0LWFjZjQtNmQ1NDc3ZTg2NDJjIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOmE0ODBkZWJhLTlmMjQtOWU0Yy04ODY0LThjOTM5NDIyODU0OCIgc3RSZWY6b3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmE0ODBkZWJhLTlmMjQtOWU0Yy04ODY0LThjOTM5NDIyODU0OCIvPiA8cGhvdG9zaG9wOlRleHRMYXllcnM+IDxyZGY6QmFnPiA8cmRmOmxpIHBob3Rvc2hvcDpMYXllck5hbWU9IisiIHBob3Rvc2hvcDpMYXllclRleHQ9IisiLz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSLDlyIgcGhvdG9zaG9wOkxheWVyVGV4dD0iw5ciLz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSLDtyIgcGhvdG9zaG9wOkxheWVyVGV4dD0iw7ciLz4gPHJkZjpsaSBwaG90b3Nob3A6TGF5ZXJOYW1lPSI9IiBwaG90b3Nob3A6TGF5ZXJUZXh0PSI9Ii8+IDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0iPSDmi7fotJ0iIHBob3Rvc2hvcDpMYXllclRleHQ9Ij0iLz4gPC9yZGY6QmFnPiA8L3Bob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmMXfuoAAATASURBVGiB7ZpPTBxVHMc/OyzLmoGGFtqwwK3UFNF6aLFpbDys9eDFLA1L4KAH1MSkYGkbIb30UJPGQrSokDSpckCTkq78qR6MabsHo4kprY2rlAMLF3dZUooFupMu/z0Ms87MDruzsLtsYz/JJvPe/N6b72/f+82beb+xMDiGATbAtf47ApSu12WSMBAA7gGDwHVgUW9kMXCgBmgHKtIsMFn8QBswoK4UVMc5wMV1g2wTD7KmfmSNOUqlVWVwAWjVt7IJFlwOEZdD5MguO6V2KzbBYvqqlg/bWfsipltDwsurBJ4sc29ugcGQxPWQxOLqmt5M6axN7UCtkfgah0j7i8VUiLmmBW+FfKvA/gIb+wtsNJQX4JeWaBuZYWAyrDdtBYaB7wTk4LykPptjgYtVRQwcdmRMvBEVYi79r5RwsaqInNhB7wRsVsANlKvPXHihiNZ9OzMi0gyKlraRGXV1GVAnIN8qo9SW5icU39TjxdLSi+fX0ZQKjUfrvp3Ulubrq10CUK2UbIKFSy8VZ0yUgqWlF0tLL0093rh2nQeK9TeQQwJQopTcZfmUP2eNaZgtlNmt1JVpRsFhBfKUksshZlwUwFrnO6ZtXQ6Rb/9+rBRt6oWM6kJ7CmWlh0M6jZr5UmLPQY+lpXfDzuo8w+AZ1tSdOFBOV6Nzwzbx+jNC359Dp1EzAnlJrLDbhf4pIGHEGs3Pph4v3b4A19zVuF+tTEpAMvPdDEJik+wmK+6ZSlwkih8jno1AKthKXGzKga5GJ12bvmRqeeqn0DMHthsLg2P/vXR6B+KYZhHO49FDTRCbfflOhmRe6k33OeSPHj/1U+iZA9vN/8OBr2/+EfeF+8GsRMOXP/LT7+MpE2aWhA5IkUVujk7S7QsYOvFgVqLh8g36xqcZCfyTFpHxSPgsJNptfPX+63DlFt2+APR4o4+8injv1DyfOis5/VZ1gt7gXN8vfPzbhGmB4U/qEe0b7+ybmkKKE/V7d0dHYjPi04FmJV5zxd9VlyKLvHflFn3j09G6ROKzaiET7TY+f/u1aNlZsmPb/nkFjQOPl1fjGkuRRU5+83O07J2a57Pvh+O0SD36fIEmiEORFQryjQdFPX1OHCjn3PHDNFy+wRmvvMFrdiS2GsShyIrmvEatb37BlPiuRid7CkWufvAGzpIdnPGOZmwk7sxGNGUr8BgoABgKSTFb2EbiFRQnkhmJ8/VHOV9/dNMODIUkdXFRAEJKyRMME3iyrGkg2m0cqyzdcMtDcaJ+726qyndtWpgZgpFlPEFNuilkBXzA8yAHyOm/HnKtukTT8N1jL8fteE+hyNXmN1Or1oBTfz5kQRvEdwRgSF3jCYbpGHuUdjHJ0jH2SP/vAwwJgAc5Ix7l7P0ZuibmMqUtId0Tc5y9P6OvDgIeATl9f1p9ZmUNmn3T1N6ewi8tZUhmLH5pCfftKZp806zEpIs5BSwo64AH6AA+Ulv0T4b5YUrCXZZPjUPkYGEeZXYruWnahl9aXSMYWeburJzo9gTDRolu1rV6QPutRA5y7rUpLepSRzdwElgB7UK2AjQjZ+39se22HT9yTruJdfFg/LUKyNl7N/KXKweRk8qZTtkvIQfqXeTPbTwYfG7zL73xnfmqiSc5AAAAAElFTkSuQmCC) no-repeat center center / cover;
     cursor:pointer;
 }
+
+/*mobile*/
