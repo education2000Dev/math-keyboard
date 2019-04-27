@@ -7,7 +7,7 @@ import SVGInline from "react-svg-inline"
 
 import actions from '../actions'
 
-import commonStyles from '../style'
+//import commonStyles from '../style'
 import CleanBrackets from '../utils'
 
 const MQ = MathQuill.getInterface(2);
@@ -21,12 +21,12 @@ class MathSignButton extends React.Component {
     }
     onTouchStart = () => {
         this.setState({ClassName: 'math-board-number-button-on-touch'});
-    }
+    };
     onTouchEnd = (e) => {
         this.setState({ClassName: 'math-board-number-button'});
         this.props.handleClick();
         e.preventDefault();
-    }
+    };
     componentDidMount() {
         if (this.props.value === '{' || this.props.value === '}') {
             
@@ -40,7 +40,6 @@ class MathSignButton extends React.Component {
         )
     }
 }
-
 const mathSigns = {
     line1: [
         {name: 'leftParenthesis', value: '(', type: 'cmd', cmd: '('},
@@ -95,13 +94,13 @@ const mathSigns = {
         // {name: 'varnothing', value: '\\varnothing', type: 'basic'},
         {name: 'phi', value: '\\phi', type: 'basic'},
     ],
-}
+};
 
 class MathBoard extends React.Component {
     onTouchEnd = (e, value) => {
         this.handleExtraClick(value);
         e.preventDefault();
-    }
+    };
     handleExtraClick = (value) => {
         switch(value) {
             case 'Backspace':
@@ -123,7 +122,7 @@ class MathBoard extends React.Component {
                 break;
             default:
         }
-    }
+    };
     handleClick = (button) => {
         if (button.type === 'basic') {
             if (button.name === 'cdot') {
@@ -159,14 +158,14 @@ class MathBoard extends React.Component {
         this.props.mq.__controller.blurred = false;     
         
         this.props.input.val(CleanBrackets(this.props.mq.latex()));
-    }
+    };
     render() {
         return (
-            <div>
-                <div className='math-board-container col-xs-4-12'>
+            <div className='math_advboard'>
+                <div className='math-board-container'>
                     {mathSigns.line1.map((value, index) => {
                         return (
-                            <div key={index} className='mathboard-number-button-container col-xs-3-12'>
+                            <div key={index} className='mathboard-number-button-containe'>
                                 <MathSignButton value={value.value} handleClick={() => {this.handleClick(value)}} />
                             </div>
                         )
@@ -280,7 +279,7 @@ const mapStateToPropsForMathBoard = (state) => {
         input: state.this.input,
         divelem: state.this.divelem,
     }
-}
+};
 
 const ConnectedMathBoard = connect(mapStateToPropsForMathBoard)(MathBoard);
 
