@@ -339,7 +339,6 @@ class Test extends React.Component {
         //获取数学键盘预期最右侧位置数值
         let keyboard_right =  this.props.divelem.offset().left + 400;
         //右侧部分不足以显示数学键盘时调整键盘显示位置 否则相反
-        console.log(container_right,keyboard_right);
         this.props.divelem[keyboard_right>container_right?'addClass':'removeClass']('keyboard_right');
         //获取当前底部区域的高度
         let container_scroll_top = $(window).scrollTop(),

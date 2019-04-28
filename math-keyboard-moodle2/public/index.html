@@ -1,78 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <script>
+<head>
+  <script>
       var M = {}</script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!--
+    manifest.json provides metadata used when your web app is added to the
+    homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+  -->
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!--
-       Notice the use of %PUBLIC_URL% in the tags above.
-       It will be replaced with the URL of the `public` folder during the build.
-       Only files inside the `public` folder can be referenced from the HTML.
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!--
+     Notice the use of %PUBLIC_URL% in the tags above.
+     It will be replaced with the URL of the `public` folder during the build.
+     Only files inside the `public` folder can be referenced from the HTML.
 
-       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-       work correctly both with client-side routing and a non-root public URL.
-       Learn how to configure a non-root public URL by running `npm run build`.
-     -->
-    <title>React App</title>
-    <style>
-      .box {
-        display: block;
-        padding-right: 30px;
-      }
-      .main {
-        /* float: left; */
-        width: 100%;
-      }
-      .card {
-        margin-top:100px;
-        position: relative;
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="input"></div>
-    <div id="root"></div>
-    <div style="height: 100px;"></div>
-    <div class="box">
-      <div class="main" id="region-main">
-        <div class="card card-block">
-            <div class="content">
-              <div class="formulation clearfix">
-                <h4 class="accesshide">Question text</h4>
-                <div class="qtext">
-                  <span class="filter_mathjaxloader_equation">
-                    <p>“<span class="nolink">\(a\)</span> divided by <span class="nolink">\(b\)</span>” can be symbolized by the fraction
-                      <label for="q220:21_answer" class="accesshide">Answer</label>
-                      <span class="matheditor2"></span>
-                      <span id="q220:21_question_info" hidden="hidden">eyIyMzMiOnsiaWQiOiIyMzMiLCJhbnN3ZXIiOiJcXGZyYWN7YX17Yn0iLCJhbnN3ZXJmb3JtYXQiOiIyIiwiZnJhY3Rpb24iOiIxLjAwMDAwMDAiLCJmZWVkYmFjayI6IiIsImZlZWRiYWNrZm9ybWF0IjoiMSJ9fQ==</span>
-                      <input value="0" name="q220:21_equivalence" hidden="hidden" />
-                      <input type="text" name="q220:21_user_input" id="q220:21_user_input" size="11" class="form-control" style="display: inline-blockwidth:112px;" />
-                      <input type="text" name="q220:21_answer" id="q220:21_answer" size="80" class="form-control" hidden="hidden" style="display: inline-blockwidth:112px;" />.
-                    </p>
-                  </span>
-                </div>
+     Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+     work correctly both with client-side routing and a non-root public URL.
+     Learn how to configure a non-root public URL by running `npm run build`.
+   -->
+  <title>React App</title>
+  <style>
+    .box {
+      display: block;
+      padding-right: 30px;
+    }
+    .main {
+      /* float: left; */
+      width: 100%;
+    }
+    .card {
+      margin-top:100px;
+      position: relative;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<noscript>
+  You need to enable JavaScript to run this app.
+</noscript>
+<div id="input"></div>
+<div id="root"></div>
+<div style="height: 100px;"></div>
+<div class="box">
+  <div class="main" id="region-main">
+    <div class="card card-block logic">
+      <div class="content">
+        <h4 class="accesshide">Question text</h4>
+        <input type="hidden" name="q222:1_:sequencecheck" value="2" />
+        <input type="text" class="form-control" style="display:inline;" id="answer" name="answer" hidden="hidden" />
+        <div class="qtext"><span id="q222:1_logic" hidden="hidden">Cg0KdmFyIGV4cD1pbnB1dF9hcnJbJ2ExJ107DQp2YXIgYW5zMT0nMiBcXGNkb3QgMyBcXGNkb3QgM2FhYWFiYmJjJzsNCnZhciB3eiA9ZXhwLmluZGV4T2YoJzInKTsNCnZhciB3ejEgPWV4cC5pbmRleE9mKCczJyk7DQp2YXIgd3oyID1leHAuaW5kZXhPZignMScpOw0KdmFyIHd6MyA9ZXhwLmluZGV4T2YoJy8nKTsNCnZhciB3ejQgPWV4cC5pbmRleE9mKCdcZGl2Jyk7DQp2YXIgd3o1ID1leHAuaW5kZXhPZignLScpOw0KDQp2YXIgdG9vbHMgPSBNLnF0eXBlX2xvZ2ljLmFtZGZ1bmN0aW9uKCk7DQp2YXIgYm9vbCA9ICB0b29scy5pc0VxdWFsRXhwcmVzc2lvbihleHAsYW5zMSk7DQpjb25zb2xlLmxvZyh3eix3ejEsYm9vbCk7DQppZih3ej49MCAmJiB3ejE+PTAmJiB3ejI8MCAmJiB3ejM8MCAmJiB3ejU8MCAmJmJvb2wgKQ0KCXsgDQoJCXJldHVybiB0cnVlOw0KCX0NCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0K</span>
+          <span class="filter_mathjaxloader_equation">
+                <p>The completely factored form of <span class="nolink">\(18a^{4}b^{3}c\)</span>
+                  <span class="matheditor4"></span>
+                   <input type="text" class="form-control" style="display:inline;" id="q220:21_user_input" name="q220:21_user_input"/>
+              </p>
+              </span>
+
         </div>
       </div>
     </div>
-    
-  <script>
+  </div>
+</div>
+
+<script>
     window.onload = function(){
         M.extention.math_question.render_keyboard('body');
     }
-  </script>
-  </body>
+</script>
+</body>
 </html>

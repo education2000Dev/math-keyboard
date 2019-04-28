@@ -150,7 +150,7 @@ _self.render_keyboard = function(selector){
         });
 
         //MultiAnswer 3
-        let $m3questions = $(selector).find('.multianswer3');
+        let $m3questions = $(selector).hasClass('multianswer3')?$(selector):$(selector).find('.multianswer3');
         $m3questions.each(function (i, m3question) {
             let $m3question = $(m3question);
             let fields = $m3question.find('.content');
@@ -190,38 +190,35 @@ _self.render_keyboard = function(selector){
                 })
             })
         });
-
-        /*logic
-        let matharea_for_logic = $(selector).find('.logic');
+        let matharea_for_logic = $(selector).hasClass('logic')?$(selector):$(selector).find('.logic');
         matharea_for_logic.each(function (i, qlogic) {
             let mathfields = $(qlogic).find('.content');
             mathfields.each(function () {
                 let self = this;
-                $(self).find('span[name$=unprocessed_info]').text();
-                correct_answers = JSON.parse(_self.decode64(correct_answers));
-                let ismath = false;
 
-                let mathfields_for_multianswer3 = $(self).find('span[class="matheditor3"]');
-                mathfields_for_multianswer3.each(function (i, field) {
-                    let store = createStore(reducer);
-                    let $field = $(field);
-                    let $input = $field.nextAll('input[name$=answer]');
-                    let $user_input = $field.nextAll('input[name$=user_input]');
-                    let _id = $input.prop('id');
-                    $user_input.css('display', 'none');
-                    let width = $input.innerWidth();
-                    const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
-                    ReactDOM.render(
-                        <Provider store={store}>
-                            <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
-                        </Provider>,
-                        newdiv.get(0)
-                    );
-                    newdiv.insertAfter($field);
+                let mathfields_for_logic = $(self).find('span[class="matheditor4"]');
+                   mathfields_for_logic.each(function (i, field) {
+                       let store = createStore(reducer);
+                       let $field = $(field);
+                       let $input = $field.nextAll('input[name$=answer]');
+                       let $user_input = $field.nextAll('input[name$=user_input]');
+                       let _id = $user_input.attr('id');
+                       $user_input.css('display', 'none');
+                       let width = $input.innerWidth();
+                       let ismath = !!Number($user_input.attr('data-math'));
+                       const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
+
+                       ReactDOM.render(
+                           <Provider store={store}>
+                               <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
+                           </Provider>,
+                           newdiv.get(0)
+                       );
+                       newdiv.insertAfter($field);
+                    })
                 })
-            })
+
         });
-        */
 
     }
 };
