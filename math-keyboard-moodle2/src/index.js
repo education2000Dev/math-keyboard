@@ -12,7 +12,9 @@ let M = window.M;
 M.extention = M.extention || {};
 M.extention.math_question = M.extention.math_question || {};
 let _self = M.extention.math_question;
+
 _self.keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+
 _self.utf8_decode = (utftext) => {
     let string = "";
     let i = 0;
@@ -92,17 +94,19 @@ _self.render_keyboard = function(selector){
                 $user_input.val($input.val());
             }
             let ismath = false;
-            let correct_answers = $field.nextAll('span[id$=question_info]').text();
-            correct_answers = JSON.parse(_self.decode64(correct_answers));
-            $.each(correct_answers, function(i, val) {
-                if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/)) {
-                    ismath = true;
-                    if (val.answer.match(/^[+|-][\d\w]*$/)) {
-                        ismath = false;
+            let mathkeyboard = $user_input.attr('data-mathkeyboard');
+            if(typeof mathkeyboard !=='undefined'){
+                ismath = !!Number(mathkeyboard);
+            }else{
+                let correct_answers = $field.nextAll('span[id$=question_info]').text();
+                correct_answers = JSON.parse(_self.decode64(correct_answers));
+                $.each(correct_answers, function(i, val) {
+                    if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/) && !val.answer.match(/^[+|-][\d\w]*$/)) {
+                        ismath = true;
+                        return false;
                     }
-                    if (ismath) return false;
-                }
-            });
+                });
+            }
             let _id = $input.prop('id');
             $user_input.css('display', 'none');
             let width = $input.innerWidth();
@@ -121,21 +125,27 @@ _self.render_keyboard = function(selector){
         mathfields_for_multianswer2.each(function (i, field) {
             let store = createStore(reducer);
             let $field = $(field);
-            let input = $field.nextAll('input[name$=answer]');
-            let $user_input = input.nextAll('input[name$=user_input]');
+            let input = $field.nextAll('input[name$=answer]').first();
+            let $user_input = input.nextAll('input[name$=user_input]').first();
             if ($user_input.val()) {
                 input.val($user_input.val());
             } else {
                 $user_input.val(input.val());
             }
             let ismath = false;
-            let correct_answers = $field.nextAll('span[id$=question_info]').text();
-            correct_answers = $.parseJSON(_self.decode64(correct_answers));
-            $.each(correct_answers, function(i, val) {
-                if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/) && !val.answer.match(/^[+|-][\d\w]*$/)) {
-                    return false;
-                }
-            });
+            let mathkeyboard = $user_input.attr('data-mathkeyboard');
+            if(typeof mathkeyboard !=='undefined'){
+                ismath = !!Number(mathkeyboard);
+            }else{
+                let correct_answers = $field.nextAll('span[id$=question_info]').text();
+                correct_answers = JSON.parse(_self.decode64(correct_answers));
+                $.each(correct_answers, function(i, val) {
+                    if (val.answer.match(/\{|\+|^.+-|\\|<|=|>/) && !val.answer.match(/^[+|-][\d\w]*$/)) {
+                        ismath = true;
+                        return false;
+                    }
+                });
+            }
             let _id = input.prop('id');
             input.css('display', 'none');
             let width = input.innerWidth();
