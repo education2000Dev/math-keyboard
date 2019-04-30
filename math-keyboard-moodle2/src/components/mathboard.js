@@ -105,6 +105,13 @@ const mathSigns = {
 };
 
 class MathBoard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            keyboard:1
+        }
+    }
+
     onTouchEnd = (e, value) => {
         this.handleExtraClick(value);
         e.preventDefault();
@@ -168,72 +175,32 @@ class MathBoard extends React.Component {
         this.props.input.val(CleanBrackets(this.props.mq.latex()));
     };
     render() {
+
+
+        switch(this.state.keyboard){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
         return (
             <div className='math_advboard'>
                 <div className='math-board-container'>
-                    <div className="math-board-column">
-                        <div className="math-board-row">
-                            {mathSigns.line1.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
-                        <div className="math-board-row">
-                            {mathSigns.line2.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
-                        <div className="math-board-row">
-                            {mathSigns.line3.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
-                        <div className="math-board-row">
-                            {mathSigns.line4.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
+                    <div className="math-board-area">
+                        <div className="math-board-column">
 
+                        </div>
+                        <div className="math-board-column">
+
+                        </div>
                     </div>
-                    <div className="math-board-column">
+                    <div className="math-board-area">
                         <div className="math-board-row">
-                            {mathSigns.line5.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
+                            <div className='word-button mathboard_mathboard' onTouchEnd={() => {this.props.dispatch(actions.toggleShowMathboard())}}> A B C</div>
                         </div>
-                        <div className="math-board-row">
-                            {mathSigns.line6.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
-                        <div className="math-board-row">
-                            {mathSigns.line7.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
-                        <div className="math-board-row">
-                            {mathSigns.line8.map((value, index) => {
-                                return (
-                                    <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}} />
-                                )
-                            })}
-                        </div>
-
                     </div>
-
                 </div>
             </div>
         )

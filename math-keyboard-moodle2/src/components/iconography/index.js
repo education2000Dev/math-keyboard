@@ -58,6 +58,8 @@ module.exports = {
     RBRACKET:require('./rbracket'),
     VERT:require('./vert'),
     CAP:require('./cap'),
-    CUP:require('./cup')
-
+    CUP:require('./cup'),
+    MATHBOARD:require('./mathboard'),
+    SHIFT:require('./shift'),
+    BACKSPACE2:require('./backspace2')
 };
