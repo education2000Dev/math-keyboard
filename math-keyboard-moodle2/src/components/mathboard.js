@@ -177,7 +177,7 @@ class MathBoard extends React.Component {
             case 'Space':
                 this.props.mq.write('\\ ');
                 break;
-            case 'mathboard':
+            case 'ABC':
                 this.props.dispatch(actions.toggleShowMathboard())
                 break;
             default:
@@ -277,7 +277,7 @@ class MathBoard extends React.Component {
                     <div className="math-board-area">
                         <div className="math-board-column">
                             <div className="math-board-row">
-                                <WordButton value='mathboard' handleExtraClick={this.handleExtraClick} />
+                                <WordButton value='ABC' handleExtraClick={this.handleExtraClick} />
                                 <ExtraButton value='Space' handleExtraClick={this.handleExtraClick}/>
                                 <MathSignButton value='period' handleClick={() => {this.handleClick('period')}}  />
                             </div>

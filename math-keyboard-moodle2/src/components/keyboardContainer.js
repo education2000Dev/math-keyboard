@@ -10,7 +10,7 @@ import ConnectedKeyboard from './keyboard'
 import ConnectedKeyboardPC from './keyboardpc'
 import actions from '../actions'
 
-import '../style.css'
+//import '../style.css'
 
 class KeyboardContainer extends React.Component {
     componentDidMount() {

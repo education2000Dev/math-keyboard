@@ -74,7 +74,11 @@ _self.render_keyboard = function(selector){
             const newdiv = $('<div style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
-                <MathKeyboard originalInput={$input} ismath='true' divelem={newdiv} />
+                <MathKeyboard
+                    originalInput={$input}
+                    divelem={newdiv}
+                    ismath='true'
+                />
             </Provider>,
             newdiv.get(0)
         );
@@ -109,11 +113,15 @@ _self.render_keyboard = function(selector){
             }
             let _id = $input.prop('id');
             $user_input.css('display', 'none');
-            let width = $input.innerWidth();
             const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
-                <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
+                <MathKeyboard
+                    originalInput={$user_input}
+                    divelem={newdiv}
+                    ismath={ismath}
+                    expressionboard='true'
+                />
             </Provider>,
             newdiv.get(0)
         );

@@ -66,5 +66,9 @@ module.exports = {
     MATH:require('./math'),
     SIGN:require('./sign'),
     CLEAR:require('./clear'),
-    HIDE:require('./hide')
+    HIDE:require('./hide'),
+    LEFT2:require('./left2'),
+    UP2:require('./up2'),
+    RIGHT2:require('./right2'),
+    DOWN2:require('./down2')
 };

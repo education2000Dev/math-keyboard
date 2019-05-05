@@ -176,9 +176,13 @@ class KeyBoard extends React.Component {
                     <ConnectedCommandLine />
                     <ConnectedLetterBoard />
                 </ToggleDisplay>
-                <ToggleDisplay if={this.props.showmathboard}>
+                <ToggleDisplay if={this.props.showmathboard && this.props.expressionboard}>
                     <ConnectedCommandLine />
                     <ConnectedMathBoard />
+                </ToggleDisplay>
+                <ToggleDisplay if={this.props.showmathboard && !this.props.expressionboard}>
+                    <ConnectedCommandLine />
+                    <ConnectedSignBoard />
                 </ToggleDisplay>
             </div>
         )

@@ -333,12 +333,10 @@
 }
 
 .command-button {
-    color: #3B3E40;
-    fill: #3B3E40;
-    height: 40px;
-    line-height: 40px;
+    padding:4px;
+    border-radius:6px;
+    border:solid 1px #fafafa;
     text-align: center;
-    display: inline-block;
     box-sizing: border-box;
     user-select: none;
     -ms-user-select: none;
@@ -347,18 +345,13 @@
 }
 
 .command-button-on-touch {
-    background-color: #00bcd4;
-    color: white;
-    fill: white;
-    height: 40px;
-    line-height: 40px;
+    padding:4px;
+    background-color: #fff;
+    border-color:#d5d5d5;
     text-align: center;
-    display: inline-block;
-    box-sizing: border-box;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+}
+.command-button svg{
+    fill:#3b3e40;
 }
 .number-board-container {
     width: 100%;
@@ -438,18 +431,19 @@
     color: #4a4b56;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-.word-button.mathboard_mathboard{
+.word-button.mathboard_mathboard,.word-button.mathboard_ABC{
     width: 22%;
     box-shadow: 0 2px 0 0 #1e1f26, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset!important;
     background-color: #3F4351!important;
     background-image: linear-gradient(-45deg, #3F4351, #384758)!important;
-    color: #E6EAEF!important;
+    color: #fff!important;
 }
-.word-button.word-button-on-touch.mathboard_mathboard{
+.word-button.word-button-on-touch.mathboard_mathboard,
+.word-button.word-button-on-touch.mathboard_ABC{
     width: 22%;
     box-shadow: 0 0px 0 0 #121418, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset!important;
     transition: 0s!important;
-    color: #1e1f26!important;
+    color: #fff!important;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3)!important;
 }
 .keyboard-touch .extra-space,.keyboard-touch .extra-enter{
@@ -631,7 +625,7 @@
 .math_advboard .extra-space{
     flex-basis: 41%;
 }
-.math_advboard .mathboard_mathboard{
+.math_advboard .mathboard_ABC{
     flex-basis: 35%;
 }
 
@@ -662,7 +656,9 @@
     border-bottom:none;
 }
 
-/*szy 190423*/
+/*commandline*/
+
+
 /*deal with bootstrap reboot*/
 
 .mq-editable-field sup {
