@@ -85,13 +85,12 @@ class LetterBoard extends React.Component {
                     })}
                 </div>
                 <div className='number-board-row'>
-                    <WordButton value='shift' handleExtraClick={this.handleExtraClick} />
+                    <WordButton value='shift' capslock={this.props.capslock} handleExtraClick={this.handleExtraClick} />
                     {Letters.line3.map((value, index) => {
                         return <NumberButton key={index} value={this.props.capslock ? value.toUpperCase() : value} handleClick={this.handleLetterClick}  />
                     })}
                     <WordButton value='backspace2' handleExtraClick={this.handleExtraClick} />
                 </div>
-
                 <div className='number-board-row'>
                     <WordButton value='mathboard' handleExtraClick={this.handleExtraClick} />
                     <NumberButton value=',' handleClick={this.handleLetterClick} />

@@ -63,12 +63,6 @@
 .keyboard-pc-direction:active{
     background-color: #4baf1c;
 }
-.keyboard-pc-direction svg{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
 .keyboard-pc-direction.keyboard_close{
     width:24px;
     background-color: #ee555a;
@@ -120,7 +114,7 @@
 .math-keyboard-row button:active{
     transform: translateY(3px);
 }
-.math-keyboard-row button svg{
+.math-keyboard-row button svg,.keyboard-pc-direction svg,.math-board-number-button svg{
     position:absolute;
     top:50%;
     left:50%;
@@ -509,6 +503,7 @@
 .math-board-number-button{
     flex:1;
     display: flex;
+    position:relative;
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
@@ -535,12 +530,54 @@
     color: #b7c3d1;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
+.math-board-number-button.mb_normal{
+    box-shadow: 0 2px 0 0 #b35800, 0 4px 2px -1px rgba(0, 0, 0, 0.6), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    background-color: #FF006A;
+    background-image: linear-gradient(-45deg, #EC821A,#ffbd00);
+    color: #E6EAEF;
+}
+.math-board-number-button.math-board-number-button-on-touch.mb_normal{
+    box-shadow: 0 0px 0 0 #990040, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: 0s;
+    color: #b3004a;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.math-board-number-button.mb_extra{
+    box-shadow: 0 2px 0 0 #082fa6, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    background-color: #0B44EF;
+    background-image: linear-gradient(-45deg, #0B44EF, #007dfa);
+    color: #E6EAEF;
+}
+.math-board-number-button.math-board-number-button-on-touch.mb_extra{
+    box-shadow: 0 0px 0 0 #07288d, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: 0s;
+    color: #082fa6;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
 
+/*advboard*/
 
+.math_advboard .math-board-container{
+    flex-direction: column;
+}
+.math-board-area{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
 
-
-
-
+}
+.math-board-area .math-board-column:first-child{
+    flex-basis:60%;
+}
+.math-board-area .math-board-column:last-child{
+    flex-basis:30%;
+}
+.math_advboard .extra-enter{
+    flex-basis: 60%;
+}
+.math_advboard .word-button{
+    width:20%;
+}
 
 
 
