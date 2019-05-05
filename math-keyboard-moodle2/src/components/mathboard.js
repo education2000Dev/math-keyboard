@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux'
 import MathQuill from 'mathquill'
-import SVGInline from "react-svg-inline"
+//import SVGInline from "react-svg-inline"
 
 import actions from '../actions'
 
@@ -21,8 +21,11 @@ class MathSignButton extends React.Component {
         this.state = {
             ClassName: 'math-board-number-button'
         };
-        this.config = mathSigns[this.props.value];
+
     }
+    getconfig = () =>{
+        return mathSigns[this.props.value];
+    };
     onTouchStart = () => {
         this.setState({ClassName: 'math-board-number-button math-board-number-button-on-touch'});
     };
@@ -33,39 +36,44 @@ class MathSignButton extends React.Component {
     };
 
     componentDidMount() {
-        if (this.config.value === '{' || this.config.value === '}') {
-            
-        } else {
-            MQ.StaticMath(ReactDOM.findDOMNode(this.refs[this.config.value]));
+        if('{}'.indexOf(this.getconfig(this.props.value).value)<0){
+            MQ.StaticMath(ReactDOM.findDOMNode(this.refs[this.props.value]));
         }
+        //if (this.getconfig(this.props.value).value === '{' || this.getconfig(this.props.value).value === '}') {
+        //
+        //} else {
+        //    MQ.StaticMath(ReactDOM.findDOMNode(this.refs[this.props.value]));
+        //}
     }
     render() {
         let a =  this.props.value;
         const SvgForName = Iconography[a.toUpperCase()];
-        let content = SvgForName? <SvgForName color='#000' />:this.config.value;
-
+        let content = SvgForName? <SvgForName color='#FFF' />:this.getconfig(this.props.value).value;
+        if( this.props.value === 'none'){
+            content = '';
+        }
         return (
-            <div className={this.state.ClassName + ' ' + (this.config.extraClassName||'')} onTouchStart={() => {this.onTouchStart()}} onTouchEnd={(e) => {this.onTouchEnd(e)}}>
+            <div className={this.state.ClassName + ' ' + (this.getconfig(this.props.value)['extraClassName']||'')} onTouchStart={() => {this.onTouchStart()}} onTouchEnd={(e) => {this.onTouchEnd(e)}}>
                 {content}
             </div>
        )
     }
 }
 const mathSigns = {
-    'left_paren':{value: '(', type: 'cmd', cmd: '('},
-    'right_paren':{value: ')', type: 'cmd', cmd: ')'},
-    'cdot':{value: '* / \\cdot', type: 'basic',extraClassName:'mb_normal'},
-    'frac':{value: '\\frac{a}{b}', type: 'cmd', cmd: '\\frac',extraClassName:'mb_extra'},
-    'lbrace':{value: '{', type: 'cmd', cmd: '{'},
-    'rbrace':{value: '}', type: 'cmd', cmd: '}'},
-    'exp_2':{value: 'x^2', type: 'multicmd',extraClassName:'mb_extra'},
-    'sqrt':{value: '\\sqrt{x}', type: 'cmd', cmd: '\\sqrt',extraClassName:'mb_extra'},
-    'lt':{value: '<', type: 'basic'},
-    'gt':{value: '>', type: 'basic'},
-    'exp':{value: 'x^{y}', type: 'multicmd',extraClassName:'mb_extra'},
-    'radical':{value: '\\sqrt[y]{x}', type: 'multicmd',extraClassName:'mb_extra'},
-    'leq':{value: '\\leq', type: 'basic'},
-    'geq':{value: '\\geq', type: 'basic'},
+    'left_paren':{value: '(', type: 'cmd', cmd: '(',extraClassName:'mb_board'},
+    'right_paren':{value: ')', type: 'cmd', cmd: ')',extraClassName:'mb_board'},
+    'cdot':{value: '\\cdot', type: 'basic',extraClassName:'mb_normal'},
+    'frac':{value: '\\frac{a}{b}', type: 'cmd', cmd: '\\frac',extraClassName:'mb_board'},
+    'lbrace':{value: '{', type: 'cmd', cmd: '{',extraClassName:'mb_sign'},
+    'rbrace':{value: '}', type: 'cmd', cmd: '}',extraClassName:'mb_sign'},
+    'exp_2':{value: 'x^2', type: 'multicmd',extraClassName:'mb_board'},
+    'sqrt':{value: '\\sqrt', type: 'cmd', cmd: '\\sqrt',extraClassName:'mb_board'},
+    'lt':{value: '<', type: 'basic',extraClassName:'mb_sign'},
+    'gt':{value: '>', type: 'basic',extraClassName:'mb_sign'},
+    'exp':{value: 'x^{y}', type: 'multicmd',extraClassName:'mb_board'},
+    'radical':{value: '\\sqrt[{}]{}', type: 'multicmd',extraClassName:'mb_board'},
+    'leq':{value: '\\leq', type: 'basic',extraClassName:'mb_sign'},
+    'geq':{value: '\\geq', type: 'basic',extraClassName:'mb_sign'},
     '7':{value: '7', type: 'basic'},
     '8':{value: '8', type: 'basic'},
     '9':{value: '9', type: 'basic'},
@@ -79,36 +87,35 @@ const mathSigns = {
     '3':{value: '3', type: 'basic'},
     'times':{value: '\\times', type: 'basic',extraClassName:'mb_normal'},
     '0':{value: '0', type: 'basic'},
-    'period':{value: '.', type: 'basic'},
-    'equal':{value: '=', type: 'basic'},
+    'period':{value: '.', type: 'basic',extraClassName:'mb_sign'},
+    'equal':{value: '=', type: 'basic',extraClassName:'mb_board'},
     'divide':{value: '\\div', type: 'basic',extraClassName:'mb_normal'},
-    'subscript':{value: 'x_b', type: 'cmd', cmd: 'x_{}'},
-    '%':{value: '%', type: 'basic'},
-    '|':{value: '|', type: 'basic'},
-    // 'varnothing':{value: '\\varnothing', type: 'basic'},
-    'a':{value: 'a', type: 'basic'},
-    'b':{value: 'b', type: 'basic'},
-    'c':{value: 'c', type: 'basic'},
-    'x':{value: 'x', type: 'basic'},
-    'y':{value: 'y', type: 'basic'},
-    'lbracket':{value: 'x', type: 'basic'},
-    'rbracket':{value: 'x', type: 'basic'},
-    'neq':{value: 'x', type: 'basic'},
-    'approx':{value: 'x', type: 'basic'},
-    'cap':{value: 'x', type: 'basic'},
-    'cup':{value: 'x', type: 'basic'},
-    'pm':{value: 'x', type: 'basic'},
-    'pi':{value: 'x', type: 'basic'},
-    'phi':{value: 'x', type: 'basic'},
-    'delta':{value: 'x', type: 'basic'},
-    'none':{value: 'x', type: 'basic'},
+    'subscript':{value: 'x_b', type: 'cmd', cmd: '_{}',extraClassName:'mb_board'},
+    'percent':{value: '%', type: 'basic',extraClassName:'mb_sign'},
+    'vert':{value: '|', type: 'basic',extraClassName:'mb_sign'},
+    'a':{value: 'a', type: 'basic',extraClassName:'mb_sign mb_letter'},
+    'b':{value: 'b', type: 'basic',extraClassName:'mb_sign mb_letter'},
+    'c':{value: 'c', type: 'basic',extraClassName:'mb_sign mb_letter'},
+    'x':{value: 'x', type: 'basic',extraClassName:'mb_sign mb_letter'},
+    'y':{value: 'y', type: 'basic',extraClassName:'mb_sign mb_letter'},
+    'lbracket':{value: '[', type: 'basic',extraClassName:'mb_sign'},
+    'rbracket':{value: ']', type: 'basic',extraClassName:'mb_sign'},
+    'neq':{value: '\\neq', type: 'basic',extraClassName:'mb_sign'},
+    'approx':{value: '\\approx', type: 'basic',extraClassName:'mb_sign'},
+    'cap':{value: '\\cap', type: 'basic',extraClassName:'mb_sign'},
+    'cup':{value: '\\cup', type: 'basic',extraClassName:'mb_sign'},
+    'plusminus':{value: '\\pm', type: 'basic',extraClassName:'mb_sign'},
+    'pi':{value: '\\pi', type: 'basic',extraClassName:'mb_sign'},
+    'phi':{value: '\\phi', type: 'basic',extraClassName:'mb_sign'},
+    'delta':{value: '\\Delta', type: 'basic',extraClassName:'mb_sign'},
+    'none':{value: 'none', type: 'none',extraClassName:'mb_none'},
 
 };
 
 const mathSignsConfig = {
     Area1:{
         Line1:['plus','minus','times','divide','cdot'],
-        Line2:['left_paren','right_paren','frac','period','equal'],
+        Line2:['left_paren','right_paren','subscript','frac','equal'],
         Line3:['a','b','c','x','y']
     },
     Area2:{
@@ -118,7 +125,7 @@ const mathSignsConfig = {
     },
     Area3:{
         Line1:['cap','cup','none','none','none'],
-        Line2:['pm','|','%','none','none'],
+        Line2:['plusminus','vert','percent','none','none'],
         Line3:['pi','phi','delta','none','none']
     },
     Area4:{
@@ -167,11 +174,19 @@ class MathBoard extends React.Component {
             case 'sign':
                 this.setState({keyboard : 3});
                 break;
-
+            case 'Space':
+                this.props.mq.write('\\ ');
+                break;
+            case 'mathboard':
+                this.props.dispatch(actions.toggleShowMathboard())
+                break;
             default:
         }
     };
     handleClick = (button) => {
+        let name = button;
+        button = mathSigns[button];
+        button['name'] = name;
         if (button.type === 'basic') {
             if (button.name === 'cdot') {
                 this.props.mq.write('\\cdot');
@@ -181,30 +196,31 @@ class MathBoard extends React.Component {
         } else if (button.type === 'cmd') {
             if (button.value === 'x_b'){
                 this.props.mq.write(button.cmd);
+                this.props.mq.keystroke('Left')
             } else {
                 this.props.mq.cmd(button.cmd);    
             }
         } else if (button.type === 'multicmd') {
-            if (button.name === 'square') {
+            if (button.name === 'exp_2') {
                 this.props.mq.cmd('^');
                 this.props.mq.write('2');
                 this.props.mq.keystroke('Right');
-            } else if (button.name === 'power') {
+            } else if (button.name === 'exp') {
                 // this.props.mq.cmd('(');
                 // this.props.mq.keystroke('Right');
                 // this.props.mq.cmd('^');
                 // this.props.mq.cmd('(');
-                this.props.mq.write('x^{y}')
+                this.props.mq.write('^{}');
                 this.props.mq.keystroke('Left')
-            } else if (button.name === 'root') {
+            } else if (button.name === 'radical') {
                 this.props.mq.write('\\sqrt[{}]{}');
                 this.props.mq.keystroke('Left');
             }
+        }else if (button.type === 'none') {
+            return false;
         }
-
         this.props.mq.__controller.cursor.show();
-        this.props.mq.__controller.blurred = false;     
-        
+        this.props.mq.__controller.blurred = false;
         this.props.input.val(CleanBrackets(this.props.mq.latex()));
     };
     render() {
@@ -212,11 +228,11 @@ class MathBoard extends React.Component {
             <div className='math_advboard'>
                 <div className='math-board-container'>
                     <div className="math-board-area">
-                        <div className="math-board-column">
+                        <div className="math-board-column math-board-tabs">
                             <div className="math-board-row">
                                 <WordButton value='calc' area={this.state.keyboard}  handleExtraClick={this.handleExtraClick} />
 
-                                {mathSignsConfig['Area'+this.state.keyboard].Line1.map((value, index) => {
+                                {mathSignsConfig['Area'+this.state.keyboard].Line1.map((value,index) => {
                                     return (
                                         <MathSignButton key={index} value={value} handleClick={() => {this.handleClick(value)}}  />
                                     )
@@ -242,39 +258,36 @@ class MathBoard extends React.Component {
                         </div>
                         <div className="math-board-column">
                             <div className="math-board-row">
-                                <MathSignButton value={'7'} handleClick={() => {this.handleClick(mathSigns['7'])}} />
-                                <MathSignButton value={'8'} handleClick={() => {this.handleClick(mathSigns['8'])}} />
-                                <MathSignButton value={'9'} handleClick={() => {this.handleClick(mathSigns['9'])}} />
+                                <MathSignButton value={'7'} handleClick={() => {this.handleClick('7')}} />
+                                <MathSignButton value={'8'} handleClick={() => {this.handleClick('8')}} />
+                                <MathSignButton value={'9'} handleClick={() => {this.handleClick('9')}} />
                             </div>
                             <div className="math-board-row">
-                                <MathSignButton value={'4'} handleClick={() => {this.handleClick(mathSigns['4'])}} />
-                                <MathSignButton value={'5'} handleClick={() => {this.handleClick(mathSigns['5'])}} />
-                                <MathSignButton value={'6'} handleClick={() => {this.handleClick(mathSigns['6'])}} />
+                                <MathSignButton value={'4'} handleClick={() => {this.handleClick('4')}} />
+                                <MathSignButton value={'5'} handleClick={() => {this.handleClick('5')}} />
+                                <MathSignButton value={'6'} handleClick={() => {this.handleClick('6')}} />
                             </div>
                             <div className="math-board-row">
-                                <MathSignButton value={'1'} handleClick={() => {this.handleClick(mathSigns['1'])}} />
-                                <MathSignButton value={'2'} handleClick={() => {this.handleClick(mathSigns['2'])}} />
-                                <MathSignButton value={'3'} handleClick={() => {this.handleClick(mathSigns['3'])}} />
+                                <MathSignButton value={'1'} handleClick={() => {this.handleClick('1')}} />
+                                <MathSignButton value={'2'} handleClick={() => {this.handleClick('2')}} />
+                                <MathSignButton value={'3'} handleClick={() => {this.handleClick('3')}} />
                             </div>
                         </div>
                     </div>
                     <div className="math-board-area">
                         <div className="math-board-column">
                             <div className="math-board-row">
-                                <div className='word-button mathboard_mathboard' onTouchEnd={() => {this.props.dispatch(actions.toggleShowMathboard())}}>ABC</div>
-                                <MathSignButton value='subscript' handleClick={() => {this.handleClick('subscript')}}  />
+                                <WordButton value='mathboard' handleExtraClick={this.handleExtraClick} />
                                 <ExtraButton value='Space' handleExtraClick={this.handleExtraClick}/>
+                                <MathSignButton value='period' handleClick={() => {this.handleClick('period')}}  />
                             </div>
-
-
                         </div>
                         <div className="math-board-column">
                             <div className="math-board-row">
-                                <MathSignButton value={'0'} handleClick={() => {this.handleClick(mathSigns['0'])}} />
+                                <MathSignButton value={'0'} handleClick={() => {this.handleClick('0')}} />
                                 <ExtraButton value='Enter' handleExtraClick={this.handleExtraClick}/>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -83,6 +83,7 @@ class WordButton extends React.Component {
         ){
             flag = this.isactive(this.props.value);
         }
+
         return (
             <div className={(flag?this.state.ClassName2:this.state.ClassName) + ' mathboard_'+this.props.value} onTouchStart={() => this.onTouchStart()} onTouchEnd={(e) => this.onTouchEnd(e)}>
                 {a}

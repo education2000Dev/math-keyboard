@@ -61,5 +61,10 @@ module.exports = {
     CUP:require('./cup'),
     MATHBOARD:require('./mathboard'),
     SHIFT:require('./shift'),
-    BACKSPACE2:require('./backspace2')
+    BACKSPACE2:require('./backspace2'),
+    CALC:require('./calc'),
+    MATH:require('./math'),
+    SIGN:require('./sign'),
+    CLEAR:require('./clear'),
+    HIDE:require('./hide')
 };

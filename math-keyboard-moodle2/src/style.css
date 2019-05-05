@@ -440,17 +440,17 @@
 }
 .word-button.mathboard_mathboard{
     width: 22%;
-    box-shadow: 0 2px 0 0 #1e1f26, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
-    background-color: #3F4351;
-    background-image: linear-gradient(-45deg, #3F4351, #384758);
-    color: #E6EAEF;
+    box-shadow: 0 2px 0 0 #1e1f26, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset!important;
+    background-color: #3F4351!important;
+    background-image: linear-gradient(-45deg, #3F4351, #384758)!important;
+    color: #E6EAEF!important;
 }
 .word-button.word-button-on-touch.mathboard_mathboard{
     width: 22%;
-    box-shadow: 0 0px 0 0 #121418, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
-    transition: 0s;
-    color: #1e1f26;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0px 0 0 #121418, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset!important;
+    transition: 0s!important;
+    color: #1e1f26!important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3)!important;
 }
 .keyboard-touch .extra-space,.keyboard-touch .extra-enter{
     width: 26%!important;
@@ -515,7 +515,9 @@
     outline:0;
     border-radius: 0.25rem;
     cursor: pointer;
-    font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
+    font-family: "Booster Next FY", "Avenir Next",Arial,Helvetica, Avenir, sans-serif;
+    font-weight:600;
+    font-size:1.1rem;
     user-select: none;
     vertical-align: bottom;
     transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
@@ -542,18 +544,32 @@
     color: #b3004a;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-.math-board-number-button.mb_extra{
+.math-board-number-button.mb_board{
     box-shadow: 0 2px 0 0 #082fa6, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     background-color: #0B44EF;
     background-image: linear-gradient(-45deg, #0B44EF, #007dfa);
     color: #E6EAEF;
 }
-.math-board-number-button.math-board-number-button-on-touch.mb_extra{
+.math-board-number-button.math-board-number-button-on-touch.mb_board{
     box-shadow: 0 0px 0 0 #07288d, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     transition: 0s;
     color: #082fa6;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
+.math-board-number-button.mb_sign{
+    box-shadow: 0 2px 0 0 #4a4b56, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    background: linear-gradient(-45deg, #6D6F7F, #61708b) #6D6F7F;
+    color: #E6EAEF;
+}
+.math-board-number-button.math-board-number-button-on-touch.mb_sign{
+    background: linear-gradient(-45deg, #6D6F7F, #61708b) #6D6F7F;
+    box-shadow: 0 0px 0 0 #3e3f48, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: 0s;
+    color: #4a4b56;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+
+}
+
 
 /*advboard*/
 
@@ -566,9 +582,34 @@
     flex-wrap: nowrap;
 
 }
+.math-board-area .math-board-row:last-child{
+    margin-bottom:4px;
+}
+.math-board-area .math-board-column{
+    margin-bottom:6px;
+}
+
 .math-board-area .math-board-column:first-child{
     flex-basis:60%;
 }
+.math-board-area:first-child .math-board-column:first-child{
+    padding:6px 4px 6px 0;
+    margin-right:4px;
+    border: dashed 1px #d5d5d5;
+    border-left:none;
+    background:#fff;
+    border-radius:4px;
+}
+.math-board-area:last-child .math-board-column:first-child{
+    margin-right:4px;
+}
+.math-board-area:last-child .math-board-column:first-child .math-board-number-button.mb_sign{
+    margin-right:0;
+}
+.math-board-area:first-child .math-board-column:first-child .math-board-row{
+    height:36px;
+}
+
 .math-board-area .math-board-column:last-child{
     flex-basis:30%;
 }
@@ -578,55 +619,47 @@
 .math_advboard .word-button{
     width:20%;
 }
-
-
-
-
-.svg-svg {
-    font-size: 14px;
-    width: 25px;
-    height: 40px;
+.math_advboard .mb_letter{
+    font-family:"Times New Roman";
+    font-style:italic;
+    font-weight:bold;
+    font-size:1.2rem;
+}
+.math_advboard .mb_none{
+    visibility: hidden;
+}
+.math_advboard .extra-space{
+    flex-basis: 41%;
+}
+.math_advboard .mathboard_mathboard{
+    flex-basis: 35%;
 }
 
-.command-svg {
-    font-size: 14px;
-    width: 25px;
-    height: 40px;
+.math_advboard .math-board-area:first-child .math-board-column:first-child .word-button{
+    margin:-6px 4px -9px 0;
+    background:#fafafa;
+    box-shadow:none;
+    border-right:dashed 1px #d5d5d5;
+}
+.math_advboard .math-board-area:first-child .math-board-column:first-child .word-button.word-button-on-touch{
+    background:#fff;
+    border:dashed 1px #d5d5d5;
+    border-right-color:#fff;
+}
+.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:first-child .word-button{
+    margin-top:-7px;
+}
+.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:last-child .word-button{
+    margin-bottom:-11px;
 }
 
-.mathboard-command-svg {
-    fill: #00bcd4;
-    font-size: 14px;
-    width: 40px;
-    height: 55px;
+.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:first-child .word-button.word-button-on-touch {
+    margin-top:-6px;
+    border-top:none;
 }
-
-.svg-math {
-    width: 40px;
-
-    fill: #00bcd4;
-    font-size: 14px;
-    height: 40px;
-}
-
-
-/* .number-button:hover {
-    border-radius: .25rem;
-    background-color: #00bcd4;
-    color: #ffffff;
-    height: 42px;
-    line-height: 42px;
-}
-.number-button:active {
-    border-radius: .25rem;
-    background-color: #00bcd4;
-    color: #ffffff;
-    height: 42px;
-    line-height: 42px;
-} */
-.fake-button {
-    height: 48px;
-    box-sizing: border-box;
+.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:last-child .word-button.word-button-on-touch {
+    margin-bottom:-9px;
+    border-bottom:none;
 }
 
 /*szy 190423*/
