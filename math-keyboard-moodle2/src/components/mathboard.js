@@ -299,7 +299,7 @@ const mapStateToPropsForMathBoard = (state) => {
     return {
         mq: state.value.mq,
         input: state.this.input,
-        divelem: state.this.divelem,
+        divelem: state.this.divelem
     }
 };
 

@@ -91,7 +91,7 @@ class InputField extends React.Component {
         }
         this.mq.__controller.cursor.show();            
         this.mq.__controller.blurred = false; 
-        this.props.divelem.css('z-index', '998');
+        this.props.divelem.css('z-index', '995');
         if (this.props.type === 'mobile' || this.props.type === 'tablet') {
             this.props.dispatch(action.showKeyboard());
             // this.mq.__controller.cursor.show();            
@@ -109,7 +109,7 @@ class InputField extends React.Component {
     render() {
         if (this.props.os === 'Android') {
             return (
-                <div style={{position: 'relative', display: 'inline-block'}}>
+                <div style={{position: 'relative', display: 'inline-block',zIndex:'850'}}>
                     <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill' onClick={(e) => {this.handleClick(e, 1)}} 
                         onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
                         ></span>
@@ -117,7 +117,7 @@ class InputField extends React.Component {
             )   
         } else {
             return (
-                <div style={{position: 'relative', display: 'inline-block'}}>
+                <div style={{position: 'relative', display: 'inline-block',zIndex:'850'}}>
                     <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill'
                          onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
                         onTouchStart={(e) => {this.handleClick(e, 1)}} onClick={(e) => {this.handleClick(e, 1)}}></span>

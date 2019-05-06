@@ -46,7 +46,7 @@ class KeyboardContainer extends React.Component {
         })
     }
     render() {
-        let container = document.getElementById('region-main');
+        //let container = document.getElementById('region-main');
         // console.log(window.innerWidth)
         // console.log(document.body.scrollWidth)
         // console.log(document.body.offsetWidth)
@@ -61,24 +61,23 @@ class KeyboardContainer extends React.Component {
         //}
         // console.log(this.props.divelem.width())
         // console.log(this.props.divelem.innerWidth)
-        let styles = StyleSheet.create({
-            keyboardContainer: {
-                },
-            keyboardPCContainer: {}
-        });
+//hide input
+        if((this.props.type === 'tablet' || this.props.type === 'mobile')&&this.props.mobile){
+            this.props.originalInput.css('display','none');
+        }
         return (
             <div>
                 <ConnectedDeviceInfo />
                 <ToggleDisplay if={this.props.showkeyboard && !this.props.disable}>
                     <ToggleDisplay if={this.props.type === 'tablet' || this.props.type === 'mobile'}>
-                        <div className={css(styles.keyboardContainer)} onClick={(e) => {e.stopPropagation()}} onTouchStart={(e) => {e.stopPropagation()}}  onTouchMove={(e) => {e.stopPropagation();e.preventDefault()}} onTouchEnd={(e) => {e.stopPropagation();e.preventDefault()}}>
-                            <ConnectedKeyboard />
+                        <div onClick={(e) => {e.stopPropagation()}} onTouchStart={(e) => {e.stopPropagation()}}  onTouchMove={(e) => {e.stopPropagation();e.preventDefault()}} onTouchEnd={(e) => {e.stopPropagation();e.preventDefault()}}>
+                            <ConnectedKeyboard ismath={this.props.ismath} />
                         </div>
                     </ToggleDisplay>
                     <ToggleDisplay if={this.props.type === undefined}>
-                        <ConnectedKeyboardPC className={css(styles.keyboardPCContainer)} stylesheet={styles.keyboardPCContainer} />
+                        <ConnectedKeyboardPC  />
                     </ToggleDisplay>
-                
+
                 </ToggleDisplay>
             </div>
         )
@@ -95,7 +94,7 @@ const mapStateToProps = (state) => {
         disable: state.this.disable,
         id: state.this.id,
         addClickEvent: state.this.addClickEvent,
-        divelem: state.this.divelem,
+        divelem: state.this.divelem
     }
 };
 

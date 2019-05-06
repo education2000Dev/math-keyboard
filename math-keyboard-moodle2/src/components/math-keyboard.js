@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import KeyboardContainer from './keyboardContainer'
 import InputField from './input'
 import actions from '../actions'
+import ConnectedDeviceInfo from './device-detect'
 
 class MathKeyboard extends React.Component {
     componentDidMount () {
@@ -20,12 +21,20 @@ class MathKeyboard extends React.Component {
         this.props.dispatch(actions.setDivElem(divelem));
     }
     render () {
+
         return (
             <div className='math-keyboard'>
-                <ToggleDisplay if={this.props.renderInput}>
-                    <InputField />
+                <ConnectedDeviceInfo />
+
+                <ToggleDisplay if={!this.props.mobile || this.props.type === 'tablet' || this.props.type === 'mobile'}>
+
+                    <ToggleDisplay if={this.props.renderInput} >
+                        <InputField />
+                    </ToggleDisplay>
+                    <KeyboardContainer originalInput = {this.props.originalInput} ismath={this.props.ismath} mobile={this.props.mobile}/>
+
                 </ToggleDisplay>
-                <KeyboardContainer />
+
             </div>
         )
     }
@@ -34,6 +43,7 @@ class MathKeyboard extends React.Component {
 const mapStateToPropsForMathKeyboard = (state) => {
     return {
         renderInput: state.this.renderInput,
+        type: state.page.type
     }
 };
 

@@ -83,7 +83,7 @@ const mapStateToProps = (state) => {
         // id: state.this.id,
         addClickEvent: state.page.addClickEvent,
     }
-}
+};
 
 const ConnectedKeyboardContainer = connect(mapStateToProps)(KeyboardContainer);
 

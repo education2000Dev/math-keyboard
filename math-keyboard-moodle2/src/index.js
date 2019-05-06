@@ -77,7 +77,7 @@ _self.render_keyboard = function(selector){
                 <MathKeyboard
                     originalInput={$input}
                     divelem={newdiv}
-                    ismath='true'
+                    ismath={true}
                 />
             </Provider>,
             newdiv.get(0)
@@ -120,7 +120,6 @@ _self.render_keyboard = function(selector){
                     originalInput={$user_input}
                     divelem={newdiv}
                     ismath={ismath}
-                    expressionboard='true'
                 />
             </Provider>,
             newdiv.get(0)
@@ -156,11 +155,14 @@ _self.render_keyboard = function(selector){
             }
             let _id = input.prop('id');
             input.css('display', 'none');
-            let width = input.innerWidth();
             const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
-                <MathKeyboard originalInput={input} ismath={ismath} divelem={newdiv} />
+                <MathKeyboard
+                    originalInput={input}
+                    ismath={ismath}
+                    divelem={newdiv}
+                />
             </Provider>,
             newdiv.get(0)
         );
@@ -196,11 +198,14 @@ _self.render_keyboard = function(selector){
                     let $user_input = $field.nextAll('input[name$=user_input]');
                     let _id = $input.prop('id');
                     $user_input.css('display', 'none');
-                    let width = $input.innerWidth();
                     const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
                     ReactDOM.render(
                         <Provider store={store}>
-                            <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
+                            <MathKeyboard
+                                originalInput={$user_input}
+                                ismath={ismath}
+                                divelem={newdiv}
+                            />
                         </Provider>,
                         newdiv.get(0)
                     );
@@ -218,17 +223,19 @@ _self.render_keyboard = function(selector){
                    mathfields_for_logic.each(function (i, field) {
                        let store = createStore(reducer);
                        let $field = $(field);
-                       let $input = $field.nextAll('input[name$=answer]');
                        let $user_input = $field.nextAll('input[name$=user_input]');
                        let _id = $user_input.attr('id');
                        $user_input.css('display', 'none');
-                       let width = $input.innerWidth();
                        let ismath = !!Number($user_input.attr('data-math'));
                        const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
 
                        ReactDOM.render(
                            <Provider store={store}>
-                               <MathKeyboard originalInput={$user_input} ismath={ismath} divelem={newdiv} />
+                               <MathKeyboard
+                                   originalInput={$user_input}
+                                   ismath={ismath}
+                                   divelem={newdiv}
+                               />
                            </Provider>,
                            newdiv.get(0)
                        );
@@ -241,3 +248,24 @@ _self.render_keyboard = function(selector){
     }
 };
 
+_self.mobile_render_keyboard = function(selector){
+    $(selector).find('input[id$=answer]').each(function (i, field) {
+        let $field = $(field);
+        if ($field.attr('hidden') !== 'hidden') {
+            let store = createStore(reducer);
+            const newdiv = $('<div class="math-board " style="display: inline-block;"></div>');
+            ReactDOM.render(
+                <Provider store={store}>
+                    <MathKeyboard
+                        originalInput={$field}
+                        ismath={false}
+                        divelem={newdiv}
+                        mobile={true}
+                    />
+                </Provider>,
+                newdiv.get(0)
+            );
+            newdiv.insertAfter($field);
+        }
+    })
+};

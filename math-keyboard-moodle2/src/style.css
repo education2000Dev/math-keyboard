@@ -342,6 +342,7 @@
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+    line-height:1!important;
 }
 
 .command-button-on-touch {
@@ -566,7 +567,9 @@
 
 
 /*advboard*/
-
+.math_advboard.math_advboard_noexp .math-board-number-button{
+    font-weight:normal;
+}
 .math_advboard .math-board-container{
     flex-direction: column;
 }
@@ -576,17 +579,17 @@
     flex-wrap: nowrap;
 
 }
-.math-board-area .math-board-row:last-child{
+.math_advboard:not(.math_advboard_noexp) .math-board-area .math-board-row:last-child{
     margin-bottom:4px;
 }
-.math-board-area .math-board-column{
+.math_advboard:not(.math_advboard_noexp) .math-board-area .math-board-column{
     margin-bottom:6px;
 }
 
 .math-board-area .math-board-column:first-child{
     flex-basis:60%;
 }
-.math-board-area:first-child .math-board-column:first-child{
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child{
     padding:6px 4px 6px 0;
     margin-right:4px;
     border: dashed 1px #d5d5d5;
@@ -600,7 +603,7 @@
 .math-board-area:last-child .math-board-column:first-child .math-board-number-button.mb_sign{
     margin-right:0;
 }
-.math-board-area:first-child .math-board-column:first-child .math-board-row{
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .math-board-row{
     height:36px;
 }
 
@@ -629,34 +632,33 @@
     flex-basis: 35%;
 }
 
-.math_advboard .math-board-area:first-child .math-board-column:first-child .word-button{
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .word-button{
     margin:-6px 4px -9px 0;
     background:#fafafa;
     box-shadow:none;
     border-right:dashed 1px #d5d5d5;
 }
-.math_advboard .math-board-area:first-child .math-board-column:first-child .word-button.word-button-on-touch{
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .word-button.word-button-on-touch{
     background:#fff;
     border:dashed 1px #d5d5d5;
     border-right-color:#fff;
 }
-.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:first-child .word-button{
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .math-board-row:first-child .word-button{
     margin-top:-7px;
 }
-.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:last-child .word-button{
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .math-board-row:last-child .word-button{
     margin-bottom:-11px;
 }
 
-.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:first-child .word-button.word-button-on-touch {
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .math-board-row:first-child .word-button.word-button-on-touch {
     margin-top:-6px;
     border-top:none;
 }
-.math_advboard .math-board-area:first-child .math-board-column:first-child .math-board-row:last-child .word-button.word-button-on-touch {
+.math_advboard:not(.math_advboard_noexp) .math-board-area:first-child .math-board-column:first-child .math-board-row:last-child .word-button.word-button-on-touch {
     margin-bottom:-9px;
     border-bottom:none;
 }
 
-/*commandline*/
 
 
 /*deal with bootstrap reboot*/

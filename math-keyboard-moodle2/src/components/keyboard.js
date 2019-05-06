@@ -5,6 +5,8 @@ import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux'
 import ToggleDisplay from 'react-toggle-display'
 import MathQuill from 'mathquill'
+import $ from 'jquery'
+
 //import SVGInline from "react-svg-inline"
 import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
@@ -13,6 +15,7 @@ import actions from '../actions'
 import ConnectedCommandLine from './commandline.js'
 //import ConnectedMathBoardSmall from './mathboardsmall'
 import ConnectedMathBoard from './mathboard'
+import ConnectedSignBoard from './signboard'
 import CleanBrackets from '../utils'
 //import commonStyles from '../style'
 
@@ -119,20 +122,26 @@ const ConnectedLetterBoard = connect(mapStateToPropsForLetterBoard)(LetterBoard)
 
 class KeyBoard extends React.Component {
     componentDidMount () {
-        let container = document.getElementById('region-main');
 
-        function getElementViewTop(element){
-                let actualTop = element.offsetTop;
-                let current = element.offsetParent;
+        //获取数学键盘预期底部所在的Y轴坐标
+        let input_location =  this.props.divelem.offset().top - ($(window).height() - 280 - this.props.divelem.height());
+        const place_holder = '<div class="mobile_keyboard_placeholder" style="height:270px;"></div>';
+        $('body').append(place_holder);
+        //$('html,body').animate({scrollTop:input_location},300)
+        $('html,body').scrollTop(input_location);
+
+        //function getElementViewTop(element){
+         //       let actualTop = element.offsetTop;
+        //        let current = element.offsetParent;
             
-            　　　　while (current !== null){
-            　　　　　　actualTop += current.offsetTop;
-            　　　　　　current = current.offsetParent;
-            　　　　}
+         //   　　　　while (current !== null){
+        //    　　　　　　actualTop += current.offsetTop;
+          //  　　　　　　current = current.offsetParent;
+          //  　　　　}
 
-                   let elementScrollTop = document.compatMode === "BackCompat"?document.body.scrollTop:document.documentElement.scrollTop;
-            　　　　return actualTop-elementScrollTop;
-            　　}
+          //         let elementScrollTop = document.compatMode === "BackCompat"?document.body.scrollTop:document.documentElement.scrollTop;
+          //  　　　　return actualTop-elementScrollTop;
+          //  　　}
 
         // if (document.body.scrollHeight - this.props.divelem.offset().top - this.props.divelem.height() < 260) {
         //     container.style.height = container.offsetHeight + 260 + 'px';
@@ -148,11 +157,15 @@ class KeyBoard extends React.Component {
         // console.log(window.innerHeight)
         // console.log(getElementViewTop(this.props.divelem[0]))
         // console.log(window.innerHeight - getElementViewTop(this.props.divelem[0]) - this.props.divelem.height())
-        if (window.innerHeight - getElementViewTop(this.props.divelem[0]) - this.props.divelem.height() < 260) {
+        //if (window.innerHeight - getElementViewTop(this.props.divelem[0]) - this.props.divelem.height() < 260) {
             // alert('a')
-            scroll.scrollMore(300 - (window.innerHeight - getElementViewTop(this.props.divelem[0])) , {duration: 300,});
-        }
+        //    scroll.scrollMore(300 - (window.innerHeight - getElementViewTop(this.props.divelem[0])) , {duration: 300,});
+        //}
     }
+    componentWillUnmount() {
+        $('.mobile_keyboard_placeholder').remove();
+    }
+
     render() {
         // var styles = StyleSheet.create({
         //     numberButtonContainer: {
@@ -176,11 +189,11 @@ class KeyBoard extends React.Component {
                     <ConnectedCommandLine />
                     <ConnectedLetterBoard />
                 </ToggleDisplay>
-                <ToggleDisplay if={this.props.showmathboard && this.props.expressionboard}>
+                <ToggleDisplay if={this.props.showmathboard && this.props.ismath}>
                     <ConnectedCommandLine />
                     <ConnectedMathBoard />
                 </ToggleDisplay>
-                <ToggleDisplay if={this.props.showmathboard && !this.props.expressionboard}>
+                <ToggleDisplay if={this.props.showmathboard && !this.props.ismath}>
                     <ConnectedCommandLine />
                     <ConnectedSignBoard />
                 </ToggleDisplay>

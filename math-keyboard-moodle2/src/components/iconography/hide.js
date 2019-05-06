@@ -8,7 +8,7 @@ const React = require('react');
 class Hide extends React.Component {
     render (){
         return (
-            <svg t="1509352720782" className="icon" viewBox="0 0 1024 1024" version="1.1"
+            <svg t="1509352720782" viewBox="0 0 1024 1024" version="1.1"
                  xmlns="http://www.w3.org/2000/svg" p-id="3505" width="24"
                  height="24">
                 <path  fill="#3b3e40"

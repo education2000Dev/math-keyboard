@@ -8,7 +8,7 @@ const React = require('react');
 class Left2 extends React.Component {
     render() {
         return (
-            <svg t="1509352711407" className="icon" widths="22" height="22" viewBox="0 0 1024 1024" version="1.1"
+            <svg t="1509352711407" widths="22" height="22" viewBox="0 0 1024 1024" version="1.1"
                  xmlns="http://www.w3.org/2000/svg" p-id="3249">
                 <path fill="#3b3e40"
                       d="M63.312466 510.004553l428.924933 305.264519L492.237399 611.758028l466.521203 0L958.758602 408.246985 492.236376 408.246985 492.236376 204.736964 63.312466 510.004553z"
