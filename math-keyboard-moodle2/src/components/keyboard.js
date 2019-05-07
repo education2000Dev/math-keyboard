@@ -122,13 +122,10 @@ const ConnectedLetterBoard = connect(mapStateToPropsForLetterBoard)(LetterBoard)
 
 class KeyBoard extends React.Component {
     componentDidMount () {
-
-        //获取数学键盘预期底部所在的Y轴坐标
-        let input_location =  this.props.divelem.offset().top - ($(window).height() - 280 - this.props.divelem.height());
+        let container = $('#region-main');
+        //底部添加占位元素防止最底部的填空无法上划
         const place_holder = '<div class="mobile_keyboard_placeholder" style="height:270px;"></div>';
-        $('body').append(place_holder);
-        //$('html,body').animate({scrollTop:input_location},300)
-        $('html,body').scrollTop(input_location);
+        $(container).append(place_holder);
 
         //function getElementViewTop(element){
          //       let actualTop = element.offsetTop;
@@ -161,10 +158,31 @@ class KeyBoard extends React.Component {
             // alert('a')
         //    scroll.scrollMore(300 - (window.innerHeight - getElementViewTop(this.props.divelem[0])) , {duration: 300,});
         //}
+        window.addEventListener('resize',this.positioning,false);
+        this.positioning();
     }
     componentWillUnmount() {
+        //删除占位元素
         $('.mobile_keyboard_placeholder').remove();
+        window.removeEventListener('resize',this.positioning,false);
     }
+
+    positioning = ()=>{
+        let kh  = $(window).height()<400?300:320;
+        let view_t = $(window).scrollTop() + 60,
+            view_b = $(window).scrollTop() + ($(window).height() - kh - this.props.divelem.height()),
+            input_location = this.props.divelem.offset().top;
+
+        if(input_location<view_t || input_location>view_b){
+            //滚动到合适位置
+            let input_scroll = input_location - ($(window).height() - kh - this.props.divelem.height());
+
+            //$('html,body').animate({scrollTop:input_location},300)
+
+            $('html,body').scrollTop(input_scroll);
+        }
+
+    };
 
     render() {
         // var styles = StyleSheet.create({

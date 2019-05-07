@@ -38,7 +38,7 @@ class WordButton extends React.Component {
         }
         return flag;
     };
-    onTouchStart = () => {
+    onTouchStart = (e) => {
         if(this.props.value!=='shift'&&
             this.props.value!=='calc'&&
             this.props.value!=='math'&&
@@ -46,6 +46,8 @@ class WordButton extends React.Component {
         ){
             this.setState({flag:!0});
         }
+        e.preventDefault();
+        e.stopPropagation();
 
     };
     onTouchEnd = (e) => {
@@ -85,7 +87,7 @@ class WordButton extends React.Component {
         }
 
         return (
-            <div className={(flag?this.state.ClassName2:this.state.ClassName) + ' mathboard_'+this.props.value} onTouchStart={() => this.onTouchStart()} onTouchEnd={(e) => this.onTouchEnd(e)}>
+            <div className={(flag?this.state.ClassName2:this.state.ClassName) + ' mathboard_'+this.props.value} onTouchStart={(e) => this.onTouchStart(e)} onTouchEnd={(e) => this.onTouchEnd(e)}>
                 {a}
             </div>
         )

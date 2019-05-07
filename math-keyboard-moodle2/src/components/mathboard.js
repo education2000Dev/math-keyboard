@@ -178,7 +178,7 @@ class MathBoard extends React.Component {
                 this.props.mq.write('\\ ');
                 break;
             case 'ABC':
-                this.props.dispatch(actions.toggleShowMathboard())
+                this.props.dispatch(actions.toggleShowMathboard());
                 break;
             default:
         }

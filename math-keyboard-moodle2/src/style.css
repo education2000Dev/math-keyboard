@@ -114,7 +114,7 @@
 .math-keyboard-row button:active{
     transform: translateY(3px);
 }
-.math-keyboard-row button svg,.keyboard-pc-direction svg,.math-board-number-button svg{
+.math-keyboard-row button svg,.keyboard-pc-direction svg,.math-board-number-button svg,.command-button svg{
     position:absolute;
     top:50%;
     left:50%;
@@ -330,9 +330,13 @@
     justify-content: space-around;
     align-items: center;
     border-top:solid 1px #d5d5d5;
+    line-height: unset!important;
 }
 
 .command-button {
+    position:relative;
+    width: 30px;
+    height:30px;
     padding:4px;
     border-radius:6px;
     border:solid 1px #fafafa;
@@ -342,7 +346,7 @@
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    line-height:1!important;
+    line-height: unset!important;
 }
 
 .command-button-on-touch {
@@ -356,7 +360,7 @@
 }
 .number-board-container {
     width: 100%;
-    padding:10px;
+    padding:10px 4px;
     border-top:solid 1px #d5d5d5;
 
 }
@@ -392,11 +396,12 @@
     font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
     user-select: none;
     vertical-align: bottom;
-    transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
-    box-shadow: 0 2px 0 0 #b7c3d1, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition:none;
+    box-shadow: 0 1px 0 0 #b7c3d1, 0 3px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     color: #252730;
 }
 .number-button.number-button-on-touch{
+    margin-bottom:-3px;
     background:linear-gradient(-45deg, #E6EAEF, #e4edf1) #E6EAEF;
     box-shadow: 0 0px 0 0 #a8b6c7, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     transition: 0s;
@@ -421,11 +426,12 @@
     font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
     user-select: none;
     vertical-align: bottom;
-    transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
-    box-shadow: 0 2px 0 0 #4a4b56, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: none;
+    box-shadow: 0 2px 0 0 #4a4b56, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     fill:#fff;
 }
 .word-button.word-button-on-touch {
+    margin-bottom:-3px;
     background: linear-gradient(-45deg, #6D6F7F, #61708b) #6D6F7F;
     box-shadow: 0 0px 0 0 #3e3f48, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     transition: 0s;
@@ -434,7 +440,7 @@
 }
 .word-button.mathboard_mathboard,.word-button.mathboard_ABC{
     width: 22%;
-    box-shadow: 0 2px 0 0 #1e1f26, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset!important;
+    box-shadow: 0 2px 0 0 #1e1f26, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset!important;
     background-color: #3F4351!important;
     background-image: linear-gradient(-45deg, #3F4351, #384758)!important;
     color: #fff!important;
@@ -452,7 +458,7 @@
 }
 
 .keyboard-touch .extra-enter{
-    box-shadow: 0 2px 0 0 #082fa6, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 2px 0 0 #082fa6, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     background-color: #0B44EF;
     background-image: linear-gradient(-45deg, #0B44EF, #007dfa);
     color: #E6EAEF;
@@ -515,12 +521,13 @@
     font-size:1.1rem;
     user-select: none;
     vertical-align: bottom;
-    transition: box-shadow 0.2s, transform 0.2s, color 0.2s;
-    box-shadow: 0 2px 0 0 #b7c3d1, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    transition: none;
+    box-shadow: 0 1px 0 0 #b7c3d1, 0 3px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     color: #252730;
 }
 
 .math-board-number-button.math-board-number-button-on-touch{
+    margin-bottom:-3px;
     background:linear-gradient(-45deg, #E6EAEF, #e4edf1) #E6EAEF;
     box-shadow: 0 0px 0 0 #a8b6c7, 0 3px 0 0 rgba(0, 0, 0, 0), 0 4px 16px rgba(0, 0, 0, 0), 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset, 0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     transition: 0s;
@@ -528,7 +535,7 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .math-board-number-button.mb_normal{
-    box-shadow: 0 2px 0 0 #b35800, 0 4px 2px -1px rgba(0, 0, 0, 0.6), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 2px 0 0 #b35800, 0 4px 2px -1px rgba(0, 0, 0, 0.6), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     background-color: #FF006A;
     background-image: linear-gradient(-45deg, #EC821A,#ffbd00);
     color: #E6EAEF;
@@ -540,7 +547,7 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .math-board-number-button.mb_board{
-    box-shadow: 0 2px 0 0 #082fa6, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 2px 0 0 #082fa6, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     background-color: #0B44EF;
     background-image: linear-gradient(-45deg, #0B44EF, #007dfa);
     color: #E6EAEF;
@@ -552,7 +559,7 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .math-board-number-button.mb_sign{
-    box-shadow: 0 2px 0 0 #4a4b56, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 2px 0 0 #4a4b56, 0 4px 2px -1px rgba(0, 0, 0, 0.4), 0 2px 3px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
     background: linear-gradient(-45deg, #6D6F7F, #61708b) #6D6F7F;
     color: #E6EAEF;
 }
