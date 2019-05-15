@@ -84,6 +84,22 @@ _self.render_keyboard = function(selector){
         );
             newdiv.insertBefore($input);
         })
+    }else if($(selector).hasClass('statichtml_math-keyboard')){
+        //静态页数学键盘
+        let $field = $(selector);
+        let store = createStore(reducer);
+        const newdiv = $('<div class="math-board " style="display: inline-block;"></div>');
+        ReactDOM.render(
+            <Provider store={store}>
+                <MathKeyboard
+                    originalInput={$field}
+                    ismath={true}
+                    divelem={newdiv}
+                />
+            </Provider>,
+            newdiv.get(0)
+        );
+        newdiv.insertAfter($field);
     }else{
 
         //ShortAnswer 2

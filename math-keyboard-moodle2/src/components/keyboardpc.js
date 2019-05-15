@@ -341,13 +341,12 @@ class Test extends React.Component {
         //右侧部分不足以显示数学键盘时调整键盘显示位置 否则相反
         this.props.divelem[keyboard_right>container_right?'addClass':'removeClass']('keyboard_right');
         //获取当前底部区域的高度
-        let container_scroll_top = $(window).scrollTop(),
-            container_view_bottom = container_scroll_top + $(window).height();
+        let container_view_bottom = $(window).scrollTop() + $(window).height();
         //获取数学键盘预期底部所在的Y轴坐标
-        let keyboard_bottom =  this.props.divelem.offset().top + $('.'+this.props.className+' .keyboard-pc').height()+30;
+        let keyboard_bottom =  this.props.divelem.offset().top + $('.keyboard-pc').height()+30;
         //如果下面显示不全，滚动屏幕至勉强显示
-        if(container_view_bottom<keyboard_bottom){
-            $('html,body').scrollTop(keyboard_bottom);
+        if( container_view_bottom<keyboard_bottom){
+            $('html,body').scrollTop(keyboard_bottom - $(window).height()+30);
         }
     };
 
@@ -364,12 +363,13 @@ class Test extends React.Component {
             case 'extra-sign':
             	switch(value){
                     case '^':
-                        _self.props.mq.write('^{}');
+                        _self.props.mq.write('x^{}');
                         // this.props.mq.cmd('(');
-                        // this.props.mq.keystroke('Right');
+                        _self.props.mq.keystroke('Left');
                         // this.props.mq.cmd('^');
                         break;
                     case '^2':
+                        _self.props.mq.write('x');
                         _self.props.mq.cmd('^');
                         _self.props.mq.write('{2}');
                         //下一步

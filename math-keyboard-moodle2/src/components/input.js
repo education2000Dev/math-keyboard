@@ -10,6 +10,13 @@ const MQ = MathQuill.getInterface(2);
 
 class InputField extends React.Component {
     componentDidMount() {
+        this.props.divelem.keypress(function(e){
+
+            if(e.charCode === 92){
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
         this.mq = null;
         if (this.props.type === 'mobile' || this.props.type === 'tablet') {
             this.mq = MQ.MathField(this.refs['mathquill'], {
@@ -43,8 +50,9 @@ class InputField extends React.Component {
         } else {
             this.mq.latex(this.props.input.val().replace(/\s+/g, '\\ '));
         }
-        
+
         this.props.dispatch(action.setMQ(this.mq));
+
     }
     handleClick = (e, isDeskdop) => {
         if (e.type === 'touchstart') {

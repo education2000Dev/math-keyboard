@@ -391,7 +391,7 @@
     border-style: solid;
     background:linear-gradient(-45deg, #E6EAEF, #e4edf1) #E6EAEF;
     outline:0;
-    border-radius: 0.25rem;
+    border-radius: 0.16rem;
     cursor: pointer;
     font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
     user-select: none;
@@ -421,7 +421,7 @@
     border-style: solid;
     background: linear-gradient(-45deg, #6D6F7F, #61708b) #6D6F7F;
     outline:0;
-    border-radius: 0.25rem;
+    border-radius: 0.16rem;
     cursor: pointer;
     font-family: "Booster Next FY", "Avenir Next", Avenir, sans-serif;
     user-select: none;
@@ -514,7 +514,7 @@
     border-style: solid;
     background:linear-gradient(-45deg, #E6EAEF, #e4edf1) #E6EAEF;
     outline:0;
-    border-radius: 0.25rem;
+    border-radius: 0.16rem;
     cursor: pointer;
     font-family: "Booster Next FY", "Avenir Next",Arial,Helvetica, Avenir, sans-serif;
     font-weight:600;

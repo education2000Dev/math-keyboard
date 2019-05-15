@@ -90,7 +90,7 @@ const mathSigns = {
     'period':{value: '.', type: 'basic',extraClassName:'mb_sign'},
     'equal':{value: '=', type: 'basic',extraClassName:'mb_board'},
     'divide':{value: '\\div', type: 'basic',extraClassName:'mb_normal'},
-    'subscript':{value: 'x_b', type: 'cmd', cmd: '_{}',extraClassName:'mb_board'},
+    'subscript':{value: 'x_b', type: 'cmd', cmd: 'x_{}',extraClassName:'mb_board'},
     'percent':{value: '%', type: 'basic',extraClassName:'mb_sign'},
     'vert':{value: '|', type: 'basic',extraClassName:'mb_sign'},
     'a':{value: 'a', type: 'basic',extraClassName:'mb_sign mb_letter'},
@@ -202,14 +202,16 @@ class MathBoard extends React.Component {
             }
         } else if (button.type === 'multicmd') {
             if (button.name === 'exp_2') {
+                this.props.mq.write('x');
                 this.props.mq.cmd('^');
-                this.props.mq.write('2');
+                this.props.mq.write('{2}');
                 this.props.mq.keystroke('Right');
             } else if (button.name === 'exp') {
                 // this.props.mq.cmd('(');
                 // this.props.mq.keystroke('Right');
                 // this.props.mq.cmd('^');
                 // this.props.mq.cmd('(');
+                this.props.mq.write('x');
                 this.props.mq.write('^{}');
                 this.props.mq.keystroke('Left')
             } else if (button.name === 'radical') {

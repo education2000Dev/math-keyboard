@@ -168,7 +168,7 @@ class KeyBoard extends React.Component {
     }
 
     positioning = ()=>{
-        let kh  = $(window).height()<400?300:320;
+        let kh  = 300;
         let view_t = $(window).scrollTop() + 60,
             view_b = $(window).scrollTop() + ($(window).height() - kh - this.props.divelem.height()),
             input_location = this.props.divelem.offset().top;
