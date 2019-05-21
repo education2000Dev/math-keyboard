@@ -70,6 +70,8 @@ _self.render_keyboard = function(selector){
         $('input[is_original_input=true]').each(function (i, input) {
             let store = createStore(reducer);
             let $input = $(input);
+            let innerwidth = input.style.width;
+            innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
             $input.css('display', 'none');
             const newdiv = $('<div style="display: inline-block;"></div>');
             ReactDOM.render(
@@ -78,6 +80,8 @@ _self.render_keyboard = function(selector){
                     originalInput={$input}
                     divelem={newdiv}
                     ismath={true}
+                    width={innerwidth}
+
                 />
             </Provider>,
             newdiv.get(0)
@@ -128,7 +132,11 @@ _self.render_keyboard = function(selector){
                 });
             }
             let _id = $input.prop('id');
-            $user_input.css('display', 'none');
+            let innerwidth = $user_input.get(0).style.width;
+            innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
+
+            $input.css('display', 'none');
+
             const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
             <Provider store={store}>
@@ -136,6 +144,8 @@ _self.render_keyboard = function(selector){
                     originalInput={$user_input}
                     divelem={newdiv}
                     ismath={ismath}
+                    width={innerwidth}
+
                 />
             </Provider>,
             newdiv.get(0)
@@ -170,6 +180,9 @@ _self.render_keyboard = function(selector){
                 });
             }
             let _id = input.prop('id');
+            let innerwidth = input.get(0).style.width;
+            innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
+
             input.css('display', 'none');
             const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
@@ -178,6 +191,8 @@ _self.render_keyboard = function(selector){
                     originalInput={input}
                     ismath={ismath}
                     divelem={newdiv}
+                    width={innerwidth}
+
                 />
             </Provider>,
             newdiv.get(0)
@@ -213,7 +228,9 @@ _self.render_keyboard = function(selector){
                     let $input = $field.nextAll('input[name$=answer]');
                     let $user_input = $field.nextAll('input[name$=user_input]');
                     let _id = $input.prop('id');
+                    let innerwidth = $user_input.get(0).style.width;
                     $user_input.css('display', 'none');
+                    innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
                     const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
                     ReactDOM.render(
                         <Provider store={store}>
@@ -221,6 +238,7 @@ _self.render_keyboard = function(selector){
                                 originalInput={$user_input}
                                 ismath={ismath}
                                 divelem={newdiv}
+                                width={innerwidth}
                             />
                         </Provider>,
                         newdiv.get(0)
@@ -241,16 +259,18 @@ _self.render_keyboard = function(selector){
                        let $field = $(field);
                        let $user_input = $field.nextAll('input[name$=user_input]');
                        let _id = $user_input.attr('id');
-                       $user_input.css('display', 'none');
                        let ismath = !!Number($user_input.attr('data-math'));
                        const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
-
+                       let innerwidth = $user_input.get(0).style.width;
+                       $user_input.css('display', 'none');
+                       innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
                        ReactDOM.render(
                            <Provider store={store}>
                                <MathKeyboard
                                    originalInput={$user_input}
                                    ismath={ismath}
                                    divelem={newdiv}
+                                   width={innerwidth}
                                />
                            </Provider>,
                            newdiv.get(0)
@@ -267,15 +287,18 @@ _self.render_keyboard = function(selector){
 _self.mobile_render_keyboard = function(selector){
     $(selector).find('input[id$=answer]').each(function (i, field) {
         let $field = $(field);
+        let innerwidth = field.style.width;
         if ($field.attr('hidden') !== 'hidden') {
             let store = createStore(reducer);
             const newdiv = $('<div class="math-board " style="display: inline-block;"></div>');
+            innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
             ReactDOM.render(
                 <Provider store={store}>
                     <MathKeyboard
                         originalInput={$field}
                         ismath={false}
                         divelem={newdiv}
+                        width={innerwidth}
                         mobile={true}
                     />
                 </Provider>,

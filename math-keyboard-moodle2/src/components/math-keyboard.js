@@ -21,7 +21,6 @@ class MathKeyboard extends React.Component {
         this.props.dispatch(actions.setDivElem(divelem));
     }
     render () {
-
         return (
             <div className='math-keyboard'>
                 <ConnectedDeviceInfo />
@@ -29,7 +28,7 @@ class MathKeyboard extends React.Component {
                 <ToggleDisplay if={!this.props.mobile || this.props.type === 'tablet' || this.props.type === 'mobile'}>
 
                     <ToggleDisplay if={this.props.renderInput} >
-                        <InputField />
+                        <InputField width={this.props.width}/>
                     </ToggleDisplay>
                     <KeyboardContainer originalInput = {this.props.originalInput} ismath={this.props.ismath} mobile={this.props.mobile}/>
 

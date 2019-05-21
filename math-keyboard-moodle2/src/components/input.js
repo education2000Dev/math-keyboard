@@ -115,10 +115,14 @@ class InputField extends React.Component {
         this.props.input.val(CleanBrackets(this.mq.latex()));
     };
     render() {
+        let stylestr = this.props.width==="auto"?{}:{
+            width:this.props.width,
+            minWidth:'unset'
+        };
         if (this.props.os === 'Android') {
             return (
                 <div style={{position: 'relative', display: 'inline-block',zIndex:'850'}}>
-                    <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill' onClick={(e) => {this.handleClick(e, 1)}} 
+                    <span style={stylestr} className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill' onClick={(e) => {this.handleClick(e, 1)}}
                         onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
                         ></span>
                 </div>
@@ -126,7 +130,7 @@ class InputField extends React.Component {
         } else {
             return (
                 <div style={{position: 'relative', display: 'inline-block',zIndex:'850'}}>
-                    <span className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill'
+                    <span style={stylestr} className={this.props.disable ? 'math-field-disable' : 'math-field'} ref='mathquill'
                          onKeyDown={() => {this.setValue()}} onKeyUp={() => {this.setValue()}} onKeyPress={() => {this.setValue()}}
                         onTouchStart={(e) => {this.handleClick(e, 1)}} onClick={(e) => {this.handleClick(e, 1)}}></span>
                 </div>
