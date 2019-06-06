@@ -135,7 +135,7 @@ _self.render_keyboard = function(selector){
             let innerwidth = $user_input.get(0).style.width;
             innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
 
-            $input.css('display', 'none');
+            $user_input.css('display', 'none');
 
             const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
             ReactDOM.render(
@@ -188,7 +188,7 @@ _self.render_keyboard = function(selector){
             ReactDOM.render(
             <Provider store={store}>
                 <MathKeyboard
-                    originalInput={input}
+                    originalInput={$user_input}
                     ismath={ismath}
                     divelem={newdiv}
                     width={innerwidth}
@@ -220,7 +220,6 @@ _self.render_keyboard = function(selector){
                     if (correct_answers.match(/\{|\+|^.+-|\\|<|=|>/)) ismath = true;
                     if (correct_answers.match(/^[+|-][\d\w]*$/)) ismath = false;
                 }
-
                 let mathfields_for_multianswer3 = $(self).find('span[class="matheditor3"]');
                 mathfields_for_multianswer3.each(function (i, field) {
                     let store = createStore(reducer);
@@ -231,6 +230,10 @@ _self.render_keyboard = function(selector){
                     let innerwidth = $user_input.get(0).style.width;
                     $user_input.css('display', 'none');
                     innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
+                    let mathkeyboard = $user_input.attr('data-mathkeyboard');
+                    if(typeof mathkeyboard !=='undefined'){
+                        ismath = !!Number(mathkeyboard);
+                    }
                     const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
                     ReactDOM.render(
                         <Provider store={store}>
