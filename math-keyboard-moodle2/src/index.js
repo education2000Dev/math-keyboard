@@ -260,7 +260,7 @@ _self.render_keyboard = function(selector){
                    mathfields_for_logic.each(function (i, field) {
                        let store = createStore(reducer);
                        let $field = $(field);
-                       let $user_input = $field.nextAll('input[name$=user_input]');
+                       let $user_input = $field.nextAll('input[name$=user_input]').first();
                        let _id = $user_input.attr('id');
                        let ismath = !!Number($user_input.attr('data-math'));
                        const newdiv = $('<div class="math-board " math-board-id=' + _id + ' style="display: inline-block;"></div>');
