@@ -42,7 +42,7 @@ class MathKeyboard extends React.Component {
 const mapStateToPropsForMathKeyboard = (state) => {
     return {
         renderInput: state.this.renderInput,
-        type: state.page.type
+        type: state.page.type,
     }
 };
 

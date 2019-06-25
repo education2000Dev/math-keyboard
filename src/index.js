@@ -7,6 +7,7 @@ import $ from 'jquery'
 
 import reducer from './store'
 import MathKeyboard from './components/math-keyboard'
+import CleanBrackets from './utils'
 
 let M = window.M;
 M.extention = M.extention || {};
@@ -65,6 +66,9 @@ _self.decode64 = (input) => {
     output = _self.utf8_decode(output);
     return output;
 };
+_self.CleanBrackets = function(a,b){
+    return CleanBrackets(a,b);
+};
 _self.render_keyboard = function(selector){
     if($(selector).find('input[is_original_input=true]').length > 0){
         $('input[is_original_input=true]').each(function (i, input) {
@@ -117,11 +121,13 @@ _self.render_keyboard = function(selector){
             if ($input.val() && !$user_input.val()) {
                 $user_input.val($input.val());
             }
-            let ismath = false;
+            let ismath = true;
             let mathkeyboard = $user_input.attr('data-mathkeyboard');
             if(typeof mathkeyboard !=='undefined'){
                 ismath = !!Number(mathkeyboard);
-            }else{
+            }
+            //szy190625 如果单空2位指定数学键盘，则默认显示键盘
+            /*else{
                 let correct_answers = $field.nextAll('span[id$=question_info]').text();
                 correct_answers = JSON.parse(_self.decode64(correct_answers));
                 $.each(correct_answers, function(i, val) {
@@ -130,7 +136,7 @@ _self.render_keyboard = function(selector){
                         return false;
                     }
                 });
-            }
+            }*/
             let _id = $input.prop('id');
             let innerwidth = $user_input.get(0).style.width;
             innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
@@ -165,11 +171,14 @@ _self.render_keyboard = function(selector){
             } else {
                 $user_input.val(input.val());
             }
-            let ismath = false;
+            let ismath = true;
             let mathkeyboard = $user_input.attr('data-mathkeyboard');
             if(typeof mathkeyboard !=='undefined'){
                 ismath = !!Number(mathkeyboard);
-            }else{
+            }
+            //szy190625 如果多空2位指定数学键盘，则默认显示键盘
+            //PS。无论数值和单空1题如何，都不会出现数学键盘
+            /*else{
                 let correct_answers = $field.nextAll('span[id$=question_info]').text();
                 correct_answers = JSON.parse(_self.decode64(correct_answers));
                 $.each(correct_answers, function(i, val) {
@@ -178,7 +187,7 @@ _self.render_keyboard = function(selector){
                         return false;
                     }
                 });
-            }
+            }*/
             let _id = input.prop('id');
             let innerwidth = input.get(0).style.width;
             innerwidth = !innerwidth||innerwidth===""?'auto':innerwidth;
@@ -207,9 +216,11 @@ _self.render_keyboard = function(selector){
             let fields = $m3question.find('.content');
             fields.each(function () {
                 let self = this;
-                let correct_answers = $(self).find('span[name$=unprocessed_info]').text();
-                correct_answers = JSON.parse(_self.decode64(correct_answers));
+                //szy多空交换一定是数学键盘题，默认不弹出数学键盘
+                //let correct_answers = $(self).find('span[name$=unprocessed_info]').text();
+                //correct_answers = JSON.parse(_self.decode64(correct_answers));
                 let ismath = false;
+                /*
                 if ($.isArray(correct_answers['answer'])) {
                     for (let i = 0; i < correct_answers['answer'].length; i++) {
                         if (correct_answers['answer'][i].match(/\{|\+|^.+-|\\|<|=|>/) && !correct_answers['answer'][i].match(/^[+|-][\d\w]*$/)) {
@@ -219,7 +230,7 @@ _self.render_keyboard = function(selector){
                 } else {
                     if (correct_answers.match(/\{|\+|^.+-|\\|<|=|>/)) ismath = true;
                     if (correct_answers.match(/^[+|-][\d\w]*$/)) ismath = false;
-                }
+                }*/
                 let mathfields_for_multianswer3 = $(self).find('span[class="matheditor3"]');
                 mathfields_for_multianswer3.each(function (i, field) {
                     let store = createStore(reducer);
@@ -274,6 +285,7 @@ _self.render_keyboard = function(selector){
                                    ismath={ismath}
                                    divelem={newdiv}
                                    width={innerwidth}
+                                   qtype='logic'
                                />
                            </Provider>,
                            newdiv.get(0)

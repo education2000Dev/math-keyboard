@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { StyleSheet, css } from 'aphrodite';
+//import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux'
 import MathQuill from 'mathquill'
 //import SVGInline from "react-svg-inline"

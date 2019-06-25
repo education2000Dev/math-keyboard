@@ -410,6 +410,7 @@ class Test extends React.Component {
 
         _self.props.mq.focus();
 		e.stopPropagation();
+		console.log(_self.props);
         _self.props.input.val(CleanBrackets(_self.props.mq.latex()));
 	};
 	render() {

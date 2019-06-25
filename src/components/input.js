@@ -140,6 +140,7 @@ class InputField extends React.Component {
 }
 
 const mapStateToPropsForInputField = (state) => {
+    console.log(state.keyboard.qtype);
     return {
         id: state.this.id,
         type: state.page.type,

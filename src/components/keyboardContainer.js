@@ -94,7 +94,7 @@ const mapStateToProps = (state) => {
         disable: state.this.disable,
         id: state.this.id,
         addClickEvent: state.this.addClickEvent,
-        divelem: state.this.divelem
+        divelem: state.this.divelem,
     }
 };
 
