@@ -112,7 +112,7 @@ class InputField extends React.Component {
         }
     };
     setValue = () => {
-        this.props.input.val(CleanBrackets(this.mq.latex()));
+        this.props.input.val(CleanBrackets(this.mq.latex(),this.props.qtype));
     };
     render() {
         let stylestr = this.props.width==="auto"?{}:{
@@ -140,7 +140,6 @@ class InputField extends React.Component {
 }
 
 const mapStateToPropsForInputField = (state) => {
-    console.log(state.keyboard.qtype);
     return {
         id: state.this.id,
         type: state.page.type,
@@ -149,7 +148,7 @@ const mapStateToPropsForInputField = (state) => {
         input: state.this.input,
         showkeyboard: state.keyboard.showkeyboard,
         ismath: state.keyboard.ismath,
-        divelem: state.this.divelem,
+        divelem: state.this.divelem
     }
 };
 

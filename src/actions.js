@@ -71,6 +71,6 @@ const actions = {
             mq: mq,
         }
     }
-}
+};
 
 export default actions;

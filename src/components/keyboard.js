@@ -66,13 +66,13 @@ class LetterBoard extends React.Component {
         } else {
 
         }
-        this.props.input.val(CleanBrackets(this.props.mq.latex()));
+        this.props.input.val(CleanBrackets(this.props.mq.latex(),this.props.qtype));
     };
     handleLetterClick = (value) => {
         this.props.mq.write(value);
         this.props.mq.__controller.cursor.show();
         this.props.mq.__controller.blurred = false;        
-        this.props.input.val(CleanBrackets(this.props.mq.latex()));     
+        this.props.input.val(CleanBrackets(this.props.mq.latex(),this.props.qtype));
     };
     render() {
         return (
@@ -204,16 +204,16 @@ class KeyBoard extends React.Component {
         return (
             <div className='keyboard-touch'>
                 <ToggleDisplay if={!this.props.showmathboard}>
-                    <ConnectedCommandLine />
-                    <ConnectedLetterBoard />
+                    <ConnectedCommandLine  qtype={this.props.qtype}/>
+                    <ConnectedLetterBoard  qtype={this.props.qtype}/>
                 </ToggleDisplay>
                 <ToggleDisplay if={this.props.showmathboard && this.props.ismath}>
-                    <ConnectedCommandLine />
-                    <ConnectedMathBoard />
+                    <ConnectedCommandLine  qtype={this.props.qtype}/>
+                    <ConnectedMathBoard  qtype={this.props.qtype}/>
                 </ToggleDisplay>
                 <ToggleDisplay if={this.props.showmathboard && !this.props.ismath}>
-                    <ConnectedCommandLine />
-                    <ConnectedSignBoard />
+                    <ConnectedCommandLine  qtype={this.props.qtype}/>
+                    <ConnectedSignBoard  qtype={this.props.qtype}/>
                 </ToggleDisplay>
             </div>
         )

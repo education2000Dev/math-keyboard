@@ -28,9 +28,9 @@ class MathKeyboard extends React.Component {
                 <ToggleDisplay if={!this.props.mobile || this.props.type === 'tablet' || this.props.type === 'mobile'}>
 
                     <ToggleDisplay if={this.props.renderInput} >
-                        <InputField width={this.props.width}/>
+                        <InputField  qtype={this.props.qtype} width={this.props.width}/>
                     </ToggleDisplay>
-                    <KeyboardContainer originalInput = {this.props.originalInput} ismath={this.props.ismath} mobile={this.props.mobile}/>
+                    <KeyboardContainer qtype={this.props.qtype} originalInput = {this.props.originalInput} ismath={this.props.ismath} mobile={this.props.mobile}/>
 
                 </ToggleDisplay>
 
@@ -42,7 +42,7 @@ class MathKeyboard extends React.Component {
 const mapStateToPropsForMathKeyboard = (state) => {
     return {
         renderInput: state.this.renderInput,
-        type: state.page.type,
+        type: state.page.type
     }
 };
 

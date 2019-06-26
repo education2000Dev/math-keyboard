@@ -41,7 +41,7 @@ class CommandButton extends React.Component {
             command = command.substring(0,command.length-1);
             this.props.mq.keystroke(command);
         }
-        this.props.input.val(CleanBrackets(this.props.mq.latex()));
+        this.props.input.val(CleanBrackets(this.props.mq.latex(),this.props.qtype));
     };
     render() {
         let a =  this.props.value;
@@ -71,13 +71,13 @@ class CommandLine extends React.Component {
     render() {
         return (
             <div className='command-line-container'>
-                <ConnectedCommandButton value='Left2' />
-                <ConnectedCommandButton value='Up2' />
-                <ConnectedCommandButton value='Right2' />
-                <ConnectedCommandButton value='Down2' />
-                <ConnectedCommandButton value='Backspace2' />
-                <ConnectedCommandButton value='Clear' />
-                <ConnectedCommandButton value='Hide' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Left2' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Up2' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Right2' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Down2' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Backspace2' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Clear' />
+                <ConnectedCommandButton  qtype={this.props.qtype} value='Hide' />
             </div>
         )
     }

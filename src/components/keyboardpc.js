@@ -410,13 +410,12 @@ class Test extends React.Component {
 
         _self.props.mq.focus();
 		e.stopPropagation();
-		console.log(_self.props);
-        _self.props.input.val(CleanBrackets(_self.props.mq.latex()));
+        _self.props.input.val(CleanBrackets(_self.props.mq.latex(),this.props.qtype));
 	};
 	render() {
 		return <div className={css(this.props.stylesheet)} ref='keyboard_pc'>
 
-			<NumberBoard handleClick={this.handleClick}/>
+			<NumberBoard  handleClick={this.handleClick}/>
 		</div>
 	}
 }

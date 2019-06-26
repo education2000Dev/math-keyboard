@@ -11,12 +11,12 @@ let CleanBrackets = (latex,editortype = null) => {
             cleaned_latex = cleaned_latex.replace(/\\right]/g, '@right2@');
             cleaned_latex = cleaned_latex.replace(/\\right\\}/g, '@right3@');
             CleanBrackets(cleaned_latex);
-            cleaned_latex = cleaned_latex.replace('@left1@', '\\left(');
-            cleaned_latex = cleaned_latex.replace('@left2@', '\\left[');
-            cleaned_latex = cleaned_latex.replace('@left3@', '\\left\\{');
-            cleaned_latex = cleaned_latex.replace('@right1@', '\\right)');
-            cleaned_latex = cleaned_latex.replace('@right2@', '\\right]');
-            cleaned_latex = cleaned_latex.replace('@right3@', '\\right\\}');
+            cleaned_latex = cleaned_latex.replace(/@left1@/g, '\\left(');
+            cleaned_latex = cleaned_latex.replace(/@left2@/g, '\\left[');
+            cleaned_latex = cleaned_latex.replace(/@left3@/g, '\\left\\{');
+            cleaned_latex = cleaned_latex.replace(/@right1@/g, '\\right)');
+            cleaned_latex = cleaned_latex.replace(/@right2@/g, '\\right]');
+            cleaned_latex = cleaned_latex.replace(/@right3@/g, '\\right\\}');
             break;
         default:
             cleaned_latex = cleaned_latex.replace(/\\{/g, '{');

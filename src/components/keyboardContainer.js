@@ -71,11 +71,11 @@ class KeyboardContainer extends React.Component {
                 <ToggleDisplay if={this.props.showkeyboard && !this.props.disable}>
                     <ToggleDisplay if={this.props.type === 'tablet' || this.props.type === 'mobile'}>
                         <div onClick={(e) => {e.stopPropagation()}} onTouchStart={(e) => {e.stopPropagation()}}  onTouchMove={(e) => {e.stopPropagation();e.preventDefault()}} onTouchEnd={(e) => {e.stopPropagation();e.preventDefault()}}>
-                            <ConnectedKeyboard ismath={this.props.ismath} />
+                            <ConnectedKeyboard qtype={this.props.qtype} ismath={this.props.ismath} />
                         </div>
                     </ToggleDisplay>
                     <ToggleDisplay if={this.props.type === undefined}>
-                        <ConnectedKeyboardPC  />
+                        <ConnectedKeyboardPC   qtype={this.props.qtype}/>
                     </ToggleDisplay>
 
                 </ToggleDisplay>
@@ -94,7 +94,7 @@ const mapStateToProps = (state) => {
         disable: state.this.disable,
         id: state.this.id,
         addClickEvent: state.this.addClickEvent,
-        divelem: state.this.divelem,
+        divelem: state.this.divelem
     }
 };
 

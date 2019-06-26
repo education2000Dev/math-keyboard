@@ -223,7 +223,7 @@ class MathBoard extends React.Component {
         }
         this.props.mq.__controller.cursor.show();
         this.props.mq.__controller.blurred = false;
-        this.props.input.val(CleanBrackets(this.props.mq.latex()));
+        this.props.input.val(CleanBrackets(this.props.mq.latex(),this.props.qtype));
     };
     render() {
         return (
